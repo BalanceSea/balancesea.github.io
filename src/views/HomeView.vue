@@ -40,8 +40,8 @@ const firstPlugin = plugins[0];
   <section class="doc-section prose-section" id="requirements">
     <div class="section-kicker">01 / 运行环境</div><h2>兼容环境</h2><p class="lead">具体版本和软依赖以对应插件页面为准。</p>
     <div class="compat-grid">
-      <div><Server /><span>服务端</span><strong>Paper</strong></div>
-      <div><Cloud /><span>游戏版本</span><strong>1.21.11</strong></div>
+      <div><Server /><span>服务端</span><strong>Paper,Spigot,Purpur,Leaf</strong></div>
+      <div><Cloud /><span>游戏版本</span><strong>1.20+</strong></div>
       <div><Coffee /><span>Java</span><strong>Java 21</strong></div>
       <div><PlugZap /><span>常见软依赖</span><strong>PlaceholderAPI / Vault</strong></div>
     </div>
@@ -51,8 +51,6 @@ const firstPlugin = plugins[0];
     <div class="section-kicker">02 / FAQ</div><h2>常见问题</h2>
     <div class="faq-list">
       <details open><summary>如何切换插件文档？<span>⌄</span></summary><p>使用页面左侧的插件列表即可切换，当前插件会保持高亮。</p></details>
-      <details><summary>新增插件后侧栏如何更新？<span>⌄</span></summary><p>在 <code>src/plugins/</code> 下新增插件目录，Vite 会通过 <code>import.meta.glob</code> 自动发现。</p></details>
-      <details><summary>配置文档需要写到什么程度？<span>⌄</span></summary><p>应包含全部配置文件、全部配置路径、类型、默认值、允许值、生效方式和详细说明。</p></details>
     </div>
   </section>
 
