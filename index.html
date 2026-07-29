@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="云插件系列 Cloud 官方 Wiki，面向 Minecraft 群组服的一体化插件套件。">
+  <meta name="theme-color" content="#161a17">
+  <title>云插件系列 Cloud | 官方 Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-grid" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="云插件系列首页">
+      <span class="brand-mark cloud-mark"><i data-lucide="cloud"></i></span>
+      <span class="brand-copy"><strong>Cloud</strong><small>云插件系列</small></span>
+    </a>
+    <button class="search-trigger" id="searchTrigger" type="button" aria-label="搜索文档">
+      <i data-lucide="search"></i><span>搜索系列文档...</span><kbd>Ctrl K</kbd>
+    </button>
+    <div class="topbar-actions">
+      <a class="icon-button" href="https://github.com/yourname/cloud-plugins" target="_blank" rel="noreferrer" aria-label="GitHub 仓库" data-tooltip="GitHub"><i data-lucide="github"></i></a>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="切换主题" data-tooltip="切换主题"><i data-lucide="sun"></i></button>
+      <button class="icon-button mobile-only" id="menuToggle" type="button" aria-label="打开目录" data-tooltip="目录"><i data-lucide="menu"></i></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav aria-label="文档目录">
+        <div class="nav-group">
+          <p>云插件系列</p>
+          <a class="nav-link active" href="#overview"><i data-lucide="cloud"></i>系列概览</a>
+          <a class="nav-link" href="#plugins"><i data-lucide="layout-grid"></i>插件目录</a>
+          <a class="nav-link" href="#ecosystem"><i data-lucide="workflow"></i>系列生态</a>
+        </div>
+        <div class="nav-group">
+          <p>开始使用</p>
+          <a class="nav-link" href="#requirements"><i data-lucide="badge-check"></i>兼容环境</a>
+          <a class="nav-link" href="#faq"><i data-lucide="circle-help"></i>常见问题</a>
+          <a class="nav-link" href="#support"><i data-lucide="messages-square"></i>获取支持</a>
+        </div>
+      </nav>
+      <div class="sidebar-meta"><div><span>系列版本</span><strong>2026.07</strong></div><div><span>插件数量</span><strong>6 MODULES</strong></div></div>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <main class="content">
+      <section class="hero doc-section cloud-hero" id="overview" data-title="系列概览">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> Minecraft Server Suite</div>
+          <h1>云插件系列<br><em>Cloud.</em></h1>
+          <p>为 Minecraft 群组服打造的一体化插件套件。每个模块可以独立运行，也能通过 CloudCore 无缝协作。</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#plugins">浏览全部插件 <i data-lucide="arrow-right"></i></a>
+            <a class="secondary-button" href="plugins/cloudcore.html"><i data-lucide="book-open"></i> 阅读文档</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>6</strong><span>系列模块</span></div>
+            <div><strong>1.20+</strong><span>支持版本</span></div>
+            <div><strong>21</strong><span>Java 版本</span></div>
+          </div>
+        </div>
+        <div class="block-scene cloud-scene" aria-label="云插件系列模块连接场景">
+          <div class="scene-glow"></div>
+          <div class="cloud-orbit orbit-a"><i data-lucide="shield-check"></i></div>
+          <div class="cloud-orbit orbit-b"><i data-lucide="store"></i></div>
+          <div class="cloud-orbit orbit-c"><i data-lucide="messages-square"></i></div>
+          <div class="cloud-core-visual"><i data-lucide="cloud-cog"></i><strong>CLOUD</strong><span>CORE ONLINE</span></div>
+          <div class="connection-line line-a"></div><div class="connection-line line-b"></div><div class="connection-line line-c"></div>
+          <div class="floating-chip chip-one"><i data-lucide="network"></i> 6 个模块已连接</div>
+          <div class="scene-label"><span class="live-dot"></span> CLOUD NETWORK <strong>运行正常</strong></div>
+        </div>
+      </section>
+
+      <section class="doc-section feature-band" aria-labelledby="feature-title">
+        <div class="section-heading"><span>一套生态，多种能力</span><h2 id="feature-title">组合使用，也能独立部署</h2></div>
+        <div class="feature-grid">
+          <article class="feature-item"><span class="feature-icon lime"><i data-lucide="blocks"></i></span><h3>模块化</h3><p>只安装需要的插件，不为未使用的功能付出性能成本。</p></article>
+          <article class="feature-item"><span class="feature-icon blue"><i data-lucide="database-zap"></i></span><h3>跨服同步</h3><p>统一玩家数据和事件总线，为群组服保持一致状态。</p></article>
+          <article class="feature-item"><span class="feature-icon amber"><i data-lucide="panel-top"></i></span><h3>统一体验</h3><p>一致的命令、权限、配置格式和中文交互界面。</p></article>
+        </div>
+      </section>
+
+      <section class="doc-section prose-section plugin-catalog" id="plugins" data-title="插件目录">
+        <div class="catalog-heading">
+          <div><div class="section-kicker">01 / 插件目录</div><h2>选择需要的云模块</h2><p class="lead">每页展示三个插件。打开详情页可查看完整功能、命令和配置。</p></div>
+          <div class="catalog-count"><strong id="catalogRange">01 - 03</strong><span>/ 06 PLUGINS</span></div>
+        </div>
+        <div class="plugin-grid" id="pluginGrid" aria-live="polite"></div>
+        <nav class="catalog-pagination" aria-label="插件目录分页">
+          <button id="pluginPrev" type="button" aria-label="上一页"><i data-lucide="arrow-left"></i></button>
+          <div id="pluginPages" class="page-dots"></div>
+          <button id="pluginNext" type="button" aria-label="下一页"><i data-lucide="arrow-right"></i></button>
+        </nav>
+      </section>
+
+      <section class="doc-section prose-section" id="ecosystem" data-title="系列生态">
+        <div class="section-kicker">02 / 系列生态</div><h2>围绕 CloudCore 协同工作</h2>
+        <p class="lead">CloudCore 是共享能力层，其余插件按业务独立加载。单服可使用 SQLite，群组服可切换 MySQL 与 Redis。</p>
+        <div class="ecosystem-map">
+          <div class="eco-core"><i data-lucide="cloud-cog"></i><div><strong>CloudCore</strong><span>配置 · 数据 · 消息 · 服务发现</span></div></div>
+          <div class="eco-modules"><span>CloudClaim</span><span>CloudMarket</span><span>CloudChat</span><span>CloudQuest</span><span>CloudGuard</span></div>
+        </div>
+        <div class="callout success"><i data-lucide="circle-check-big"></i><div><strong>按需安装</strong><p>除了明确标记为依赖 CloudCore 的功能，每个插件都可以作为独立模块运行。</p></div></div>
+      </section>
+
+      <section class="doc-section prose-section" id="requirements" data-title="兼容环境">
+        <div class="section-kicker">03 / 运行环境</div><h2>兼容环境</h2><p class="lead">推荐使用最新版 Paper，以获得完整 API 支持与更好的性能。</p>
+        <div class="compat-grid">
+          <div><i data-lucide="server"></i><span>服务端</span><strong>Paper / Purpur</strong></div>
+          <div><i data-lucide="box"></i><span>游戏版本</span><strong>1.20.x - 1.21.x</strong></div>
+          <div><i data-lucide="coffee"></i><span>Java</span><strong>Java 21 或更高</strong></div>
+          <div><i data-lucide="database"></i><span>数据存储</span><strong>SQLite / MySQL / Redis</strong></div>
+        </div>
+      </section>
+
+      <section class="doc-section prose-section" id="faq" data-title="常见问题">
+        <div class="section-kicker">04 / FAQ</div><h2>常见问题</h2>
+        <div class="faq-list">
+          <details open><summary>必须安装全部云插件吗？<i data-lucide="chevron-down"></i></summary><p>不需要。你可以只安装一个业务插件；需要跨服同步或统一管理时，再加入 CloudCore。</p></details>
+          <details><summary>不同插件可以使用不同数据库吗？<i data-lucide="chevron-down"></i></summary><p>可以，但群组服推荐通过 CloudCore 使用同一 MySQL 数据源，便于备份和诊断。</p></details>
+          <details><summary>如何更新整个系列？<i data-lucide="chevron-down"></i></summary><p>先更新 CloudCore，再更新其他模块。每个插件详情页都会标注兼容版本和升级说明。</p></details>
+        </div>
+      </section>
+
+      <section class="doc-section support-band" id="support" data-title="获取支持">
+        <div><span class="section-kicker">需要帮助？</span><h2>联系云插件系列作者。</h2><p>反馈问题时请附上服务端版本、插件版本和完整报错日志。</p></div>
+        <div class="support-actions"><a class="primary-button" href="https://github.com/yourname/cloud-plugins/issues" target="_blank" rel="noreferrer"><i data-lucide="github"></i> 提交 Issue</a><a class="qq-link" href="https://qm.qq.com/" target="_blank" rel="noreferrer"><span>作者 QQ</span><strong>3643203568</strong></a></div>
+      </section>
+
+      <footer><div class="footer-brand"><span class="brand-mark small cloud-mark"><i data-lucide="cloud"></i></span><strong>云插件系列 Cloud</strong></div><p>由 <strong>MoutainSeaL</strong> 维护</p><a href="#overview">返回顶部 <i data-lucide="arrow-up"></i></a></footer>
+    </main>
+
+    <aside class="toc" aria-label="本页目录">
+      <p>本页内容</p><a class="toc-link active" href="#overview">系列概览</a><a class="toc-link" href="#plugins">插件目录</a><a class="toc-link" href="#ecosystem">系列生态</a><a class="toc-link" href="#requirements">兼容环境</a><a class="toc-link" href="#faq">常见问题</a><a class="toc-link" href="#support">获取支持</a>
+      <div class="toc-help"><i data-lucide="pencil-line"></i><a href="https://github.com/yourname/cloud-plugins/edit/main/index.html">编辑此页</a></div>
+    </aside>
+  </div>
+
+  <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="搜索文档" hidden>
+    <div class="search-panel"><div class="search-input-wrap"><i data-lucide="search"></i><input id="searchInput" type="search" placeholder="搜索插件或文档..." autocomplete="off"><kbd>Esc</kbd></div><div class="search-results" id="searchResults"></div><div class="search-empty" id="searchEmpty"><i data-lucide="book-open"></i><p>输入关键词开始搜索</p><span>可搜索插件名称、功能与文档章节</span></div></div>
+  </div>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="catalog-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
