@@ -39,10 +39,11 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach((section) => observer.observe(section));
 
 let toastTimer;
-const copyButton = $('#copyConfig');
-if (copyButton) {
+$$('.copy-button').forEach((copyButton) => {
   copyButton.addEventListener('click', async () => {
-    const config = $('#configCode').innerText;
+    const code = copyButton.closest('.code-block')?.querySelector('pre code');
+    if (!code) return;
+    const config = code.innerText;
     let copied = false;
     try {
       await Promise.race([
@@ -65,7 +66,7 @@ if (copyButton) {
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => $('#toast').classList.remove('show'), 1800);
   });
-}
+});
 
 window.addEventListener('resize', () => { if (innerWidth > 900) closeMenu(); });
 initIcons();

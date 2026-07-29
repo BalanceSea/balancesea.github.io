@@ -62,6 +62,8 @@ https://xxx.github.io/cloud-wiki/
 
 模板使用相对路径，因此普通项目仓库也可以正常运行。
 
+部署工作流只发布面向用户的 Wiki 文件。`templates/`、`scripts/`、AI 规范和维护说明保留在源码仓库中，不会进入 GitHub Pages 网站。
+
 ## 自定义域名
 
 需要使用自己的域名时，在仓库 **Settings > Pages > Custom domain** 中填写域名。不要为 `xxx.github.io` 地址创建 `CNAME` 文件。

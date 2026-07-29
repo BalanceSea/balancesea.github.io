@@ -43,11 +43,20 @@ AI 文档生成硬性要求：
 
   <div class="layout plugin-layout">
     <aside class="sidebar plugin-sidebar" id="sidebar">
-      <a class="back-link" href="../../"><i data-lucide="arrow-left"></i>系列首页</a>
       <nav aria-label="插件目录">
+        <div class="nav-group">
+          <p>文档</p>
+          <a class="nav-link" href="../../#overview"><i data-lucide="cloud"></i>系列概览</a>
+        </div>
         <div class="nav-group">
           <p>插件列表</p>
           <div id="pluginSideNav" data-base="../../plugins"></div>
+        </div>
+        <div class="nav-group">
+          <p>帮助</p>
+          <a class="nav-link" href="../../#requirements"><i data-lucide="badge-check"></i>兼容环境</a>
+          <a class="nav-link" href="../../#faq"><i data-lucide="circle-help"></i>常见问题</a>
+          <a class="nav-link" href="../../#support"><i data-lucide="messages-square"></i>获取支持</a>
         </div>
       </nav>
       <div class="sidebar-meta"><div><span>作者</span><strong>MoutainSeaL</strong></div><div><span>QQ</span><strong>3643203568</strong></div></div>
@@ -136,7 +145,7 @@ settings:
   option-two: 10</code></pre></div>
 
           <h3 class="config-subheading">完整 messages.yml</h3>
-          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> messages.yml · 完整文件</span></div><pre><code># 每个额外配置文件都使用独立代码块完整展示
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> messages.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 messages.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code># 每个额外配置文件都使用独立代码块完整展示
 prefix: "&lt;green&gt;[CloudExample]&lt;/green&gt; "
 no-permission: "&lt;red&gt;你没有权限。"</code></pre></div>
         </section>
@@ -156,6 +165,6 @@ no-permission: "&lt;red&gt;你没有权限。"</code></pre></div>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script src="../../catalog-data.js"></script>
   <script src="../../plugin-navigation.js"></script>
-  <script src="../../plugin-common.js"></script>
+  <script src="../../plugin-common.js?v=20260729"></script>
 </body>
 </html>
