@@ -2,7 +2,7 @@
 AI 必须先阅读 ../AI-INSTRUCTIONS.md，并检查真实源码与实际生成的配置文件。
 禁止臆造功能、命令、权限、版本或配置。配置文件必须完整，不能使用省略号。
 */
-import { Puzzle } from 'lucide-vue-next';
+import { Puzzle } from '@lucide/vue';
 
 export default {
   order: 999,

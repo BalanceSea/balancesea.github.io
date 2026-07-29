@@ -1,4 +1,4 @@
-import { Badge } from 'lucide-vue-next';
+import { Badge } from '@lucide/vue';
 
 export default {
   order: 1,

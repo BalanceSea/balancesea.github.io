@@ -1,5 +1,5 @@
 <script setup>
-import { ArrowUp } from 'lucide-vue-next';
+import { ArrowUp } from '@lucide/vue';
 import BrandMark from './BrandMark.vue';
 </script>
 

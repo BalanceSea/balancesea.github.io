@@ -1,6 +1,6 @@
 <script setup>
 import { computed, nextTick, ref, watch } from 'vue';
-import { BookOpen, Search, SearchX } from 'lucide-vue-next';
+import { BookOpen, Search, SearchX } from '@lucide/vue';
 import { plugins } from '../plugins/registry.js';
 
 const props = defineProps({ open: Boolean });

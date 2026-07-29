@@ -1,5 +1,5 @@
 <script setup>
-import { Cloud } from 'lucide-vue-next';
+import { Cloud } from '@lucide/vue';
 defineProps({ small: Boolean });
 </script>
 

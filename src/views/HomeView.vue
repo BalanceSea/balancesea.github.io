@@ -1,5 +1,5 @@
 <script setup>
-import { BadgeCheck, BookCheck, CircleCheckBig, Cloud, Coffee, Github, ListChecks, Palette, PanelLeft, PlugZap, RefreshCw, Server, Sparkles, Tag } from 'lucide-vue-next';
+import { BadgeCheck, BookCheck, Cloud, Coffee, GitFork, ListChecks, Palette, PanelLeft, PlugZap, RefreshCw, Server, Sparkles, Tag } from '@lucide/vue';
 import { plugins } from '../plugins/registry.js';
 import SiteFooter from '../components/SiteFooter.vue';
 
@@ -58,7 +58,7 @@ const firstPlugin = plugins[0];
 
   <section class="doc-section support-band" id="support">
     <div><span class="section-kicker">需要帮助？</span><h2>联系云插件系列作者。</h2><p>反馈问题时请附上服务端版本、插件版本和完整报错日志。</p></div>
-    <div class="support-actions"><a class="primary-button" href="https://github.com/yourname/cloud-plugins/issues" target="_blank" rel="noreferrer"><Github />提交 Issue</a><a class="qq-link" href="https://qm.qq.com/" target="_blank" rel="noreferrer"><span>作者 QQ</span><strong>3643203568</strong></a></div>
+    <div class="support-actions"><a class="primary-button" href="https://github.com/yourname/cloud-plugins/issues" target="_blank" rel="noreferrer"><GitFork />提交 Issue</a><a class="qq-link" href="https://qm.qq.com/" target="_blank" rel="noreferrer"><span>作者 QQ</span><strong>3643203568</strong></a></div>
   </section>
   <SiteFooter />
 </template>

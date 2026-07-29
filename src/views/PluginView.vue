@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { ArrowDown, Check, CircleCheckBig, Copy, Database, Download, FileCode2 } from 'lucide-vue-next';
+import { ArrowDown, Check, CircleCheckBig, Copy, Database, Download, FileCode2 } from '@lucide/vue';
 import { getPlugin } from '../plugins/registry.js';
 import SiteFooter from '../components/SiteFooter.vue';
 

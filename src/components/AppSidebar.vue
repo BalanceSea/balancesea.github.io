@@ -1,5 +1,5 @@
 <script setup>
-import { BadgeCheck, CircleHelp, Cloud, MessagesSquare } from 'lucide-vue-next';
+import { BadgeCheck, CircleHelp, Cloud, MessagesSquare } from '@lucide/vue';
 import { useRoute } from 'vue-router';
 import { plugins } from '../plugins/registry.js';
 
