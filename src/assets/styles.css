@@ -87,7 +87,7 @@ kbd { padding: 2px 7px; border: 1px solid var(--line); border-bottom-width: 2px;
 
 .content { min-width: 0; padding: 0 clamp(34px, 5vw, 88px); }
 .doc-section { scroll-margin-top: calc(var(--header-h) + 24px); }
-.hero { min-height: calc(100vh - var(--header-h) - 44px); max-height: 810px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr); align-items: center; gap: clamp(34px, 6vw, 90px); padding: 54px 0 66px; border-bottom: 1px solid var(--line); }
+.hero { min-height: calc(100vh - var(--header-h) - 44px); max-height: 810px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr); align-items: center; gap: clamp(34px, 4vw, 64px); padding: 54px 0 66px; border-bottom: 1px solid var(--line); }
 .eyebrow { display: flex; align-items: center; gap: 8px; color: var(--green); font: 700 11px "Roboto Mono", monospace; text-transform: uppercase; }
 .eyebrow span { width: 8px; height: 8px; background: var(--green-bright); border: 2px solid var(--ink); }
 .hero h1 { margin: 18px 0 22px; max-width: 620px; font-size: clamp(44px, 4vw, 64px); line-height: 1.1; font-weight: 800; letter-spacing: 0; }
