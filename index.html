@@ -33,13 +33,15 @@
     <aside class="sidebar" id="sidebar">
       <nav aria-label="文档目录">
         <div class="nav-group">
-          <p>云插件系列</p>
+          <p>文档</p>
           <a class="nav-link active" href="#overview"><i data-lucide="cloud"></i>系列概览</a>
-          <a class="nav-link" href="#plugins"><i data-lucide="layout-grid"></i>插件目录</a>
-          <a class="nav-link" href="#ecosystem"><i data-lucide="package-check"></i>独立架构</a>
         </div>
         <div class="nav-group">
-          <p>开始使用</p>
+          <p>插件列表</p>
+          <div id="pluginSideNav" data-base="plugins"></div>
+        </div>
+        <div class="nav-group">
+          <p>帮助</p>
           <a class="nav-link" href="#requirements"><i data-lucide="badge-check"></i>兼容环境</a>
           <a class="nav-link" href="#faq"><i data-lucide="circle-help"></i>常见问题</a>
           <a class="nav-link" href="#support"><i data-lucide="messages-square"></i>获取支持</a>
@@ -54,10 +56,10 @@
         <div class="hero-copy">
           <div class="eyebrow"><span></span> Minecraft Server Suite</div>
           <h1>云插件系列<br><em>Cloud.</em></h1>
-          <p>为 Minecraft 服务器打造的独立插件系列。每个插件拥有自己的功能、权限与配置，不需要安装公共核心。</p>
+          <p>云插件系列的官方文档站。通过左侧插件列表进入各插件页面，查看功能、命令、权限和完整配置。</p>
           <div class="hero-actions">
-            <a class="primary-button" href="#plugins">浏览全部插件 <i data-lucide="arrow-right"></i></a>
-            <a class="secondary-button" href="plugins/cloudtitle.html"><i data-lucide="book-open"></i> 阅读文档</a>
+            <a class="primary-button" href="plugins/cloudtitle/"><i data-lucide="book-open"></i> CloudTitle 文档</a>
+            <a class="secondary-button" href="templates/plugin-template/"><i data-lucide="file-plus-2"></i> 添加插件模板</a>
           </div>
           <div class="hero-stats">
             <div><strong>1</strong><span>当前插件</span></div>
@@ -65,66 +67,43 @@
             <div><strong>21</strong><span>Java 版本</span></div>
           </div>
         </div>
-        <div class="block-scene cloud-scene" aria-label="CloudTitle 独立插件场景">
+        <div class="block-scene cloud-scene" aria-label="CloudTitle 插件场景">
           <div class="scene-glow"></div>
           <div class="cloud-orbit orbit-a"><i data-lucide="tag"></i></div>
           <div class="cloud-orbit orbit-b"><i data-lucide="palette"></i></div>
           <div class="cloud-orbit orbit-c"><i data-lucide="sparkles"></i></div>
           <div class="cloud-core-visual"><i data-lucide="tag"></i><strong>CLOUDTITLE</strong><span>PLUGIN READY</span></div>
           <div class="connection-line line-a"></div><div class="connection-line line-b"></div><div class="connection-line line-c"></div>
-          <div class="floating-chip chip-one"><i data-lucide="package-check"></i> 独立安装 · 无核心依赖</div>
+          <div class="floating-chip chip-one"><i data-lucide="book-check"></i> 完整功能与配置文档</div>
           <div class="scene-label"><span class="live-dot"></span> CLOUDTITLE <strong>文档就绪</strong></div>
         </div>
       </section>
 
       <section class="doc-section feature-band" aria-labelledby="feature-title">
-        <div class="section-heading"><span>独立插件，清晰维护</span><h2 id="feature-title">安装一个插件，只管理一套配置</h2></div>
+        <div class="section-heading"><span>清晰、完整、可维护</span><h2 id="feature-title">从侧栏进入每一份插件文档</h2></div>
         <div class="feature-grid">
-          <article class="feature-item"><span class="feature-icon lime"><i data-lucide="package"></i></span><h3>完全独立</h3><p>每个插件单独安装，不依赖 CloudCore 或其他系列插件。</p></article>
+          <article class="feature-item"><span class="feature-icon lime"><i data-lucide="panel-left"></i></span><h3>侧栏切换</h3><p>插件列表根据目录注册信息自动生成，新增插件后无需逐页维护。</p></article>
           <article class="feature-item"><span class="feature-icon blue"><i data-lucide="list-checks"></i></span><h3>完整配置</h3><p>每份文档列出该插件全部可配置项、默认值与说明。</p></article>
-          <article class="feature-item"><span class="feature-icon amber"><i data-lucide="panel-left"></i></span><h3>侧栏切换</h3><p>通过插件页左侧栏在已发布的独立插件之间快速切换。</p></article>
+          <article class="feature-item"><span class="feature-icon amber"><i data-lucide="refresh-cw"></i></span><h3>自动更新目录</h3><p>GitHub Pages 发布时扫描插件元数据并生成统一列表。</p></article>
         </div>
-      </section>
-
-      <section class="doc-section prose-section plugin-catalog" id="plugins" data-title="插件目录">
-        <div class="catalog-heading">
-          <div><div class="section-kicker">01 / 插件目录</div><h2>独立插件</h2><p class="lead">打开插件详情页，查看功能、命令、权限以及全部配置项。</p></div>
-          <div class="catalog-count"><strong id="catalogRange">01 - 01</strong><span id="catalogTotal">/ 01 PLUGIN</span></div>
-        </div>
-        <div class="plugin-grid" id="pluginGrid" aria-live="polite"></div>
-        <nav class="catalog-pagination" aria-label="插件目录分页">
-          <button id="pluginPrev" type="button" aria-label="上一页"><i data-lucide="arrow-left"></i></button>
-          <div id="pluginPages" class="page-dots"></div>
-          <button id="pluginNext" type="button" aria-label="下一页"><i data-lucide="arrow-right"></i></button>
-        </nav>
-      </section>
-
-      <section class="doc-section prose-section" id="ecosystem" data-title="独立架构">
-        <div class="section-kicker">02 / 独立架构</div><h2>没有公共核心，没有隐式依赖</h2>
-        <p class="lead">每个插件都包含自己的运行逻辑、权限节点和配置文件。新增或移除某个插件不会影响系列中的其他插件。</p>
-        <div class="ecosystem-map">
-          <div class="eco-core"><i data-lucide="package-check"></i><div><strong>独立插件标准</strong><span>独立安装 · 独立配置 · 独立权限 · 独立更新</span></div></div>
-          <div class="eco-modules"><span>CloudTitle</span></div>
-        </div>
-        <div class="callout success"><i data-lucide="circle-check-big"></i><div><strong>无需 CloudCore</strong><p>CloudTitle 可直接放入服务端插件目录运行，不需要安装任何云系列公共核心。</p></div></div>
       </section>
 
       <section class="doc-section prose-section" id="requirements" data-title="兼容环境">
-        <div class="section-kicker">03 / 运行环境</div><h2>兼容环境</h2><p class="lead">推荐使用最新版 Paper，以获得完整 API 支持与更好的性能。</p>
+        <div class="section-kicker">01 / 运行环境</div><h2>兼容环境</h2><p class="lead">具体版本和软依赖以对应插件页面为准。</p>
         <div class="compat-grid">
           <div><i data-lucide="server"></i><span>服务端</span><strong>Paper / Purpur</strong></div>
           <div><i data-lucide="box"></i><span>游戏版本</span><strong>1.20.x - 1.21.x</strong></div>
           <div><i data-lucide="coffee"></i><span>Java</span><strong>Java 21 或更高</strong></div>
-          <div><i data-lucide="unplug"></i><span>系列依赖</span><strong>无需 CloudCore</strong></div>
+          <div><i data-lucide="plug-zap"></i><span>常见软依赖</span><strong>PlaceholderAPI / Vault</strong></div>
         </div>
       </section>
 
       <section class="doc-section prose-section" id="faq" data-title="常见问题">
-        <div class="section-kicker">04 / FAQ</div><h2>常见问题</h2>
+        <div class="section-kicker">02 / FAQ</div><h2>常见问题</h2>
         <div class="faq-list">
-          <details open><summary>CloudTitle 需要 CloudCore 吗？<i data-lucide="chevron-down"></i></summary><p>不需要。CloudTitle 是完全独立的插件，可直接安装和更新。</p></details>
-          <details><summary>以后新增的插件也会保持独立吗？<i data-lucide="chevron-down"></i></summary><p>是。云插件系列中的每个插件都应拥有独立配置、权限和发布文件。</p></details>
-          <details><summary>如何切换不同插件的文档？<i data-lucide="chevron-down"></i></summary><p>进入任意插件详情页后，可通过左侧插件目录切换。当前只有 CloudTitle。</p></details>
+          <details open><summary>如何切换插件文档？<i data-lucide="chevron-down"></i></summary><p>使用页面左侧的插件列表即可切换。列表由 <code>plugins/</code> 中的元数据自动生成。</p></details>
+          <details><summary>新增插件后为什么侧栏没有出现？<i data-lucide="chevron-down"></i></summary><p>确认插件目录包含有效的 <code>plugin.json</code>。GitHub Pages 会在发布时自动重新生成列表。</p></details>
+          <details><summary>配置文档需要写到什么程度？<i data-lucide="chevron-down"></i></summary><p>必须包含插件全部配置文件、全部配置路径、类型、默认值、允许值、是否需要重启以及详细说明。</p></details>
         </div>
       </section>
 
@@ -137,7 +116,7 @@
     </main>
 
     <aside class="toc" aria-label="本页目录">
-      <p>本页内容</p><a class="toc-link active" href="#overview">系列概览</a><a class="toc-link" href="#plugins">插件目录</a><a class="toc-link" href="#ecosystem">独立架构</a><a class="toc-link" href="#requirements">兼容环境</a><a class="toc-link" href="#faq">常见问题</a><a class="toc-link" href="#support">获取支持</a>
+      <p>本页内容</p><a class="toc-link active" href="#overview">系列概览</a><a class="toc-link" href="#requirements">兼容环境</a><a class="toc-link" href="#faq">常见问题</a><a class="toc-link" href="#support">获取支持</a>
       <div class="toc-help"><i data-lucide="pencil-line"></i><a href="https://github.com/yourname/cloud-plugins/edit/main/index.html">编辑此页</a></div>
     </aside>
   </div>
@@ -147,6 +126,7 @@
   </div>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
   <script src="catalog-data.js"></script>
+  <script src="plugin-navigation.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -6,25 +6,25 @@
   <meta name="description" content="CloudTitle 云称号插件文档：支持称号仓库、商城、自定义称号、药水 Buff、MySQL/SQLite 与 PlaceholderAPI。">
   <meta name="theme-color" content="#161a17">
   <title>CloudTitle · 云称号 | 云插件系列 Cloud</title>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../../styles.css">
 </head>
-<body class="plugin-detail-body">
+<body class="plugin-detail-body" data-plugin="cloudtitle">
   <div class="page-grid" aria-hidden="true"></div>
 
   <header class="topbar">
-    <a class="brand" href="../index.html" aria-label="返回云插件系列首页">
+    <a class="brand" href="../../" aria-label="返回云插件系列首页">
       <span class="brand-mark cloud-mark"><i data-lucide="cloud"></i></span>
       <span class="brand-copy"><strong>Cloud</strong><small>云插件系列</small></span>
     </a>
-    <a class="search-trigger plugin-browser-link" href="../index.html#plugins">
-      <i data-lucide="layout-grid"></i><span>浏览全部插件</span><kbd>Modules</kbd>
+    <a class="search-trigger plugin-browser-link" href="../../">
+      <i data-lucide="layout-grid"></i><span>返回系列首页</span><kbd>1 Plugin</kbd>
     </a>
     <div class="topbar-actions">
-      <a class="icon-button" href="../index.html#support" aria-label="获取支持" data-tooltip="获取支持"><i data-lucide="message-circle-question"></i></a>
+      <a class="icon-button" href="../../#support" aria-label="获取支持" data-tooltip="获取支持"><i data-lucide="message-circle-question"></i></a>
       <button class="icon-button" id="themeToggle" type="button" aria-label="切换主题" data-tooltip="切换主题"><i data-lucide="sun"></i></button>
       <button class="icon-button mobile-only" id="menuToggle" type="button" aria-label="打开插件目录" data-tooltip="插件目录"><i data-lucide="menu"></i></button>
     </div>
@@ -32,13 +32,11 @@
 
   <div class="layout plugin-layout">
     <aside class="sidebar plugin-sidebar" id="sidebar">
-      <a class="back-link" href="../index.html"><i data-lucide="arrow-left"></i>系列首页</a>
+      <a class="back-link" href="../../"><i data-lucide="arrow-left"></i>系列首页</a>
       <nav aria-label="插件目录">
         <div class="nav-group">
-          <p>当前插件</p>
-          <div>
-            <a class="nav-link active" href="cloudtitle.html"><i data-lucide="badge"></i><span>CloudTitle<small>云称号</small></span></a>
-          </div>
+          <p>插件列表</p>
+          <div id="pluginSideNav" data-base="../../plugins"></div>
         </div>
       </nav>
       <div class="sidebar-meta"><div><span>作者</span><strong>MoutainSeaL</strong></div><div><span>QQ</span><strong>3643203568</strong></div></div>
@@ -48,7 +46,7 @@
     <main class="content plugin-content">
       <article>
         <section class="plugin-detail-hero doc-section" id="overview" data-title="插件概览">
-          <div class="plugin-breadcrumb"><a href="../index.html">云插件系列</a><i data-lucide="chevron-right"></i><span>CloudTitle</span></div>
+          <div class="plugin-breadcrumb"><a href="../../">云插件系列</a><i data-lucide="chevron-right"></i><span>CloudTitle</span></div>
           <div class="plugin-title-row">
             <span class="detail-icon blue"><i data-lucide="badge"></i></span>
             <div><div class="eyebrow">玩法内容</div><h1>CloudTitle</h1><p>云称号</p></div>
@@ -130,17 +128,19 @@
       </article>
 
       <nav class="plugin-pager" aria-label="插件详情分页">
-        <a href="../index.html#plugins"><span><i data-lucide="arrow-left"></i>返回目录</span><strong>全部插件</strong></a>
+        <a href="../../"><span><i data-lucide="arrow-left"></i>返回首页</span><strong>云插件系列</strong></a>
         <a href="#configuration"><span>查看示例<i data-lucide="arrow-right"></i></span><strong>配置称号</strong></a>
       </nav>
       <footer><div class="footer-brand"><span class="brand-mark small cloud-mark"><i data-lucide="cloud"></i></span><strong>云插件系列 Cloud</strong></div><p>由 <strong>MoutainSeaL</strong> 维护 · QQ 3643203568</p><a href="#overview">返回顶部 <i data-lucide="arrow-up"></i></a></footer>
     </main>
 
-    <aside class="toc" aria-label="本页目录"><p>本页内容</p><a class="toc-link active" href="#overview">插件概览</a><a class="toc-link" href="#features">核心功能</a><a class="toc-link" href="#installation">安装方法</a><a class="toc-link" href="#commands">命令与权限</a><a class="toc-link" href="#configuration">配置示例</a><div class="toc-help"><i data-lucide="list"></i><a href="../index.html#plugins">全部插件</a></div></aside>
+    <aside class="toc" aria-label="本页目录"><p>本页内容</p><a class="toc-link active" href="#overview">插件概览</a><a class="toc-link" href="#features">核心功能</a><a class="toc-link" href="#installation">安装方法</a><a class="toc-link" href="#commands">命令与权限</a><a class="toc-link" href="#configuration">配置示例</a><div class="toc-help"><i data-lucide="list"></i><a href="../../">系列首页</a></div></aside>
   </div>
 
   <div class="toast" id="toast" role="status"><i data-lucide="check"></i><span>已复制到剪贴板</span></div>
   <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="../plugin-common.js"></script>
+  <script src="../../catalog-data.js"></script>
+  <script src="../../plugin-navigation.js"></script>
+  <script src="../../plugin-common.js"></script>
 </body>
 </html>

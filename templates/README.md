@@ -1,70 +1,74 @@
 # 添加新插件
 
-## 1. 复制页面模板
+## 1. 复制整个模板目录
 
-复制 `templates/plugin-template.html` 到 `plugins/`，并将文件改为插件的小写名称，例如：
+不要只复制 HTML。将完整目录复制到 `plugins/`，目录名必须等于插件的小写 slug：
 
 ```text
-plugins/cloudbackup.html
+templates/plugin-template/  ->  plugins/cloudbackup/
 ```
 
-## 2. 替换模板内容
+完成后应为：
 
-在新文件中搜索并修改以下内容：
+```text
+plugins/cloudbackup/
+├── index.html
+└── plugin.json
+```
 
-| 模板内容 | 替换示例 |
-| --- | --- |
-| `CloudExample` | `CloudBackup` |
-| `示例插件` | `云备份` |
-| `cloudexample` | `cloudbackup` |
-| `example` | `backup` |
-| `插件分类` | `运维工具` |
-| `v1.0.0` | 实际版本号 |
-| `puzzle` | Lucide 图标名称 |
-| `plugin-template.html` | 新插件的实际文件名 |
+页面地址将是 `/plugins/cloudbackup/`，不会显示 `.html` 后缀。
 
-同时填写插件简介、四个功能、安装步骤、命令权限和配置示例。
+## 2. 修改插件元数据
 
-## 3. 登记首页目录
+编辑新目录中的 `plugin.json`：
 
-打开根目录的 `catalog-data.js`，在数组末尾添加：
-
-```js
+```json
 {
-  slug: 'cloudbackup',
-  name: 'CloudBackup',
-  title: '云备份',
-  category: '运维工具',
-  version: '1.0.0',
-  icon: 'archive-restore',
-  tone: 'cyan',
-  summary: '自动备份世界、配置和玩家数据。',
-  keywords: '备份 恢复 世界 数据 定时任务'
+  "slug": "cloudbackup",
+  "name": "CloudBackup",
+  "title": "云备份",
+  "category": "运维工具",
+  "version": "1.0.0",
+  "icon": "archive-restore",
+  "tone": "cyan",
+  "summary": "自动备份世界、配置和玩家数据。",
+  "keywords": "备份 恢复 世界 数据 定时任务"
 }
 ```
 
-首页会自动重新计算分页数量。可用色调为 `lime`、`blue`、`amber`、`violet`、`rose` 和 `cyan`。
+`slug` 必须与目录名一致。可用色调为 `lime`、`blue`、`amber`、`violet`、`rose` 和 `cyan`。
 
-## 4. 更新插件导航
+## 3. 生成动态插件列表
 
-在 `plugins/` 中已有的插件页面侧栏加入新插件链接，并根据目录顺序调整底部的“上一个插件”和“下一个插件”。
+本地修改后运行：
 
-新插件页面中的链接示例：
-
-```html
-<a class="nav-link active" href="cloudbackup.html">
-  <i data-lucide="archive-restore"></i>
-  <span>CloudBackup<small>云备份</small></span>
-</a>
+```bash
+node scripts/generate-plugin-registry.mjs
 ```
 
-## 5. 本地检查
+脚本会扫描全部 `plugins/*/plugin.json` 并生成 `catalog-data.js`。首页和每个插件页面的侧栏都会自动更新，不需要逐页添加链接。
 
-确认首页卡片可以进入新文件，并测试：
+推送到 GitHub 后，部署工作流会自动运行该命令。
 
-- 桌面端和手机端布局
-- 侧栏当前插件高亮
-- 上一个和下一个插件链接
-- 配置复制按钮
+## 4. 让 AI 创建完整文档
+
+将以下内容同时提供给 AI：
+
+- `templates/AI-INSTRUCTIONS.md`
+- 新插件的完整源码
+- 插件实际生成的配置目录
+- `templates/plugin-template/index.html`
+
+AI 必须记录插件的全部配置文件和全部配置项，不能只提供配置示例。具体要求见 `AI-INSTRUCTIONS.md`。
+
+## 5. 完成前检查
+
+- `plugin.json` 的 slug 与目录名一致
+- 页面 `body` 的 `data-plugin` 等于 slug
+- 功能、命令、权限和占位符来自真实源码
+- 所有配置文件均完整展示
+- 每个叶子配置路径都有类型、默认值、允许值、生效方式和说明
+- 不使用省略号跳过配置
+- 页面地址不包含 `.html`
 - 作者为 `MoutainSeaL`
 - 作者 QQ 为 `3643203568`

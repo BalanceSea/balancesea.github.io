@@ -38,36 +38,6 @@ menuToggle.addEventListener('click', () => {
 sidebarBackdrop.addEventListener('click', closeMenu);
 $$('.nav-link').forEach((link) => link.addEventListener('click', closeMenu));
 
-let catalogPage = 0;
-const pageSize = 3;
-const totalPages = Math.ceil(plugins.length / pageSize);
-
-function renderCatalog() {
-  const start = catalogPage * pageSize;
-  const visible = plugins.slice(start, start + pageSize);
-  $('#pluginGrid').innerHTML = visible.map((plugin, index) => `
-    <article class="plugin-card ${plugin.tone}">
-      <div class="plugin-card-top"><span class="plugin-index">${String(start + index + 1).padStart(2, '0')}</span><span class="plugin-version">v${plugin.version}</span></div>
-      <span class="plugin-card-icon"><i data-lucide="${plugin.icon}"></i></span>
-      <div class="plugin-category">${plugin.category}</div>
-      <h3>${plugin.name}<small>${plugin.title}</small></h3>
-      <p>${plugin.summary}</p>
-      <a href="plugins/${plugin.slug}.html">查看插件详情 <i data-lucide="arrow-up-right"></i></a>
-    </article>`).join('');
-  $('#catalogRange').textContent = `${String(start + 1).padStart(2, '0')} - ${String(start + visible.length).padStart(2, '0')}`;
-  $('#catalogTotal').textContent = `/ ${String(plugins.length).padStart(2, '0')} ${plugins.length === 1 ? 'PLUGIN' : 'PLUGINS'}`;
-  $('#pluginPages').innerHTML = Array.from({ length: totalPages }, (_, page) => `<button class="page-dot${page === catalogPage ? ' active' : ''}" type="button" data-page="${page}" aria-label="第 ${page + 1} 页" aria-current="${page === catalogPage ? 'page' : 'false'}">${String(page + 1).padStart(2, '0')}</button>`).join('');
-  $('#pluginPrev').disabled = catalogPage === 0;
-  $('#pluginNext').disabled = catalogPage === totalPages - 1;
-  $('.catalog-pagination').hidden = totalPages <= 1;
-  $$('.page-dot').forEach((button) => button.addEventListener('click', () => { catalogPage = Number(button.dataset.page); renderCatalog(); }));
-  initIcons();
-}
-
-$('#pluginPrev').addEventListener('click', () => { if (catalogPage > 0) { catalogPage -= 1; renderCatalog(); } });
-$('#pluginNext').addEventListener('click', () => { if (catalogPage < totalPages - 1) { catalogPage += 1; renderCatalog(); } });
-renderCatalog();
-
 const sections = $$('.doc-section[id]');
 const sectionObserver = new IntersectionObserver((entries) => {
   const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -78,7 +48,7 @@ sections.forEach((section) => sectionObserver.observe(section));
 
 const searchIndex = [
   ...sections.map((section) => ({ title: section.dataset.title, href: `#${section.id}`, text: section.textContent.replace(/\s+/g, ' ').trim() })),
-  ...plugins.map((plugin) => ({ title: `${plugin.name} · ${plugin.title}`, href: `plugins/${plugin.slug}.html`, text: `${plugin.category} ${plugin.summary} ${plugin.keywords}` }))
+  ...plugins.map((plugin) => ({ title: `${plugin.name} · ${plugin.title}`, href: `plugins/${plugin.slug}/`, text: `${plugin.category} ${plugin.summary} ${plugin.keywords}` }))
 ];
 
 function openSearch() { searchModal.hidden = false; document.body.style.overflow = 'hidden'; requestAnimationFrame(() => searchInput.focus()); }

@@ -1,0 +1,11 @@
+{
+  "slug": "cloudexample",
+  "name": "CloudExample",
+  "title": "示例插件",
+  "category": "插件分类",
+  "version": "1.0.0",
+  "icon": "puzzle",
+  "tone": "lime",
+  "summary": "用一句话说明插件的主要价值。",
+  "keywords": "用于侧栏搜索的关键词"
+}

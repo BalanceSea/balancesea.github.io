@@ -26,6 +26,11 @@ xxx.github.io/
 │   └── workflows/
 │       └── deploy-pages.yml
 ├── plugins/
+│   └── cloudtitle/
+│       ├── index.html
+│       └── plugin.json
+├── scripts/
+│   └── generate-plugin-registry.mjs
 ├── templates/
 ├── .nojekyll
 ├── favicon.svg
@@ -33,6 +38,7 @@ xxx.github.io/
 ├── styles.css
 ├── script.js
 ├── catalog-data.js
+├── plugin-navigation.js
 └── plugin-common.js
 ```
 
