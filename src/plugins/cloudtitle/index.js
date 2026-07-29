@@ -7,12 +7,12 @@ const plugin = {
   "title": "云称号",
   "category": "玩法内容",
   "version": "1.0-SNAPSHOT",
-  "minecraft": "1.21.11",
+  "minecraft": "1.20+",
   "server": "Paper",
   "tone": "blue",
   "summary": "称号仓库、商城、自定义称号、原版 Buff 与六种获取条件的一体化称号系统。",
   "keywords": "称号 商城 仓库 自定义 Buff PlaceholderAPI SQLite MySQL Vault PlayerPoints CraftEngine",
-  "intro": "面向 Paper 1.21.11 生存服、会员服和群组服的完整称号系统。玩家通过称号仓库、商城与工坊管理身份展示，管理员可以组合金币、点券、权限、物品和 PAPI 数值条件，并为称号附加原版药水 Buff。",
+  "intro": "面向 Paper 1.20+ 生存服、会员服和群组服的完整称号系统。玩家通过称号仓库、商城与工坊管理身份展示，管理员可以组合金币、点券、权限、物品和 PAPI 数值条件，并为称号附加原版药水 Buff。",
   "toc": [
     [
       "overview",
@@ -119,7 +119,7 @@ const plugin = {
     ],
     "dependencies": [
       [
-        "Paper 1.21.11 / Java 21",
+        "Paper 1.20+ / Java 21",
         "运行环境",
         "其他实现或版本未声明兼容，不应视为受支持。"
       ],
