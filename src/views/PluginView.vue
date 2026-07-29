@@ -36,7 +36,7 @@ async function copyConfig(code) {
         <div class="plugin-breadcrumb"><RouterLink :to="{ name: 'home' }">云插件系列</RouterLink><span>›</span><span>{{ plugin.name }}</span></div>
         <div class="plugin-title-row"><span class="detail-icon" :class="plugin.tone"><component :is="plugin.icon" /></span><div><div class="eyebrow">{{ plugin.category }}</div><h1>{{ plugin.name }}</h1><p>{{ plugin.title }}</p></div></div>
         <p class="plugin-intro">{{ plugin.intro }}</p>
-        <div class="hero-actions"><a class="primary-button" href="#installation">开始安装 <ArrowDown /></a><a class="secondary-button" href="https://github.com/BalanceSea/{{plugin.version}}"><Download />获取 v{{ plugin.version }}</a></div>
+        <div class="hero-actions"><a class="primary-button" href="#installation">开始安装 <ArrowDown /></a><a class="secondary-button" :href="plugin.repository" target="_blank" rel="noreferrer"><Download />获取 v{{ plugin.version }}</a></div>
         <div class="plugin-meta-strip"><div><span>当前版本</span><strong>v{{ plugin.version }}</strong></div><div><span>支持服务端</span><strong>{{ plugin.server }}</strong></div><div><span>Minecraft</span><strong>{{ plugin.minecraft }}</strong></div><div><span>作者</span><strong>MoutainSeaL</strong></div></div>
       </section>
 

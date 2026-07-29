@@ -21,7 +21,7 @@ src/plugins/cloudbackup/
 
 编辑 `src/plugins/cloudbackup/index.js`，至少替换：
 
-- `slug`、英文名、中文名、分类和版本
+- `slug`、英文名、中文名、分类、版本和 `repository` GitHub 仓库地址
 - Minecraft、Java 与服务端版本
 - Lucide 图标与主题色
 - 简介、全部主要功能和安装步骤

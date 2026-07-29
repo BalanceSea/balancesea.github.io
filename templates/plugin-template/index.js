@@ -11,6 +11,7 @@ export default {
   title: '示例插件',
   category: '插件分类',
   version: '1.0.0',
+  repository: 'https://github.com/BalanceSea/CloudExample',
   minecraft: '待确认',
   server: '待确认',
   icon: Puzzle,

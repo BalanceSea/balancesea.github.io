@@ -7,6 +7,7 @@ const plugin = {
   "title": "云称号",
   "category": "玩法内容",
   "version": "1.0-SNAPSHOT",
+  "repository": "https://github.com/BalanceSea/CloudTitle",
   "minecraft": "1.20+",
   "server": "Paper",
   "tone": "blue",
