@@ -24,7 +24,7 @@ async function copyConfig(code) {
     document.body.appendChild(area); area.select(); copied = document.execCommand('copy'); area.remove();
   }
   toast.value = copied ? '配置已复制到剪贴板' : '复制失败，请手动选择内容';
-  window.setTimeout(() => { toast.value = ''; }, 1800);
+  window.setTimeout(() => { toast.value = ''; }, 4000);
 }
 </script>
 
