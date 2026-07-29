@@ -2,6 +2,16 @@
 
 一个无需构建工具、可直接部署到 GitHub Pages 的 Minecraft 系列插件文档模板。
 
+## 直接发布
+
+将仓库命名为 `你的GitHub用户名.github.io`，并把本目录全部内容上传到 `main` 分支。内置的 GitHub Actions 工作流会自动发布网站，访问地址为：
+
+```text
+https://你的GitHub用户名.github.io/
+```
+
+详细步骤见 `DEPLOY.md`。
+
 模板包含带分页的系列插件目录，以及六个互相独立的插件详情 HTML 页面：CloudCore、CloudClaim、CloudMarket、CloudChat、CloudQuest 和 CloudGuard。
 
 ## 本地预览
@@ -26,13 +36,7 @@
 
 ## 部署到 GitHub Pages
 
-1. 创建 GitHub 仓库，例如 `yourname.github.io` 或 `plugin-wiki`。
-2. 将本目录中的文件推送到仓库 `main` 分支。
-3. 打开仓库的 **Settings > Pages**。
-4. 在 **Build and deployment** 中选择 **Deploy from a branch**。
-5. 选择 `main` 分支与 `/ (root)` 目录并保存。
-
-几分钟后即可通过 `https://yourname.github.io/` 或 `https://yourname.github.io/plugin-wiki/` 访问。
+项目内已包含 `.github/workflows/deploy-pages.yml`，推送到 `main` 后会自动部署。用户主页仓库和普通项目仓库均可使用。
 
 ## 文件说明
 
@@ -45,10 +49,14 @@
 - `plugins/cloudguard.html`：CloudGuard 独立文档
 - `catalog-data.js`：首页目录所需的简短插件元数据
 - `styles.css`：视觉样式与响应式布局
+- `favicon.svg`：浏览器标签页与站点品牌图标
 - `script.js`：首页分页、搜索、主题切换和移动端菜单
 - `plugin-common.js`：各独立文档共用的主题、目录和复制交互
 - `templates/plugin-template.html`：新增插件时使用的完整页面模板
 - `templates/README.md`：添加插件、首页登记和导航更新说明
+- `.github/workflows/deploy-pages.yml`：GitHub Pages 自动部署工作流
+- `.nojekyll`：关闭 Jekyll 处理，按原样发布静态文件
+- `DEPLOY.md`：直接访问 `xxx.github.io` 的完整发布步骤
 
 ## 许可
 
