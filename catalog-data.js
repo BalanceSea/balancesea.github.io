@@ -5,7 +5,7 @@ window.CLOUD_CATALOG = [
     "name": "CloudTitle",
     "title": "云称号",
     "category": "玩法内容",
-    "version": "1.0.0",
+    "version": "1.0-SNAPSHOT",
     "icon": "badge",
     "tone": "blue",
     "summary": "称号仓库、商城、自定义称号、Buff 与多种获取条件的一体化称号系统。",

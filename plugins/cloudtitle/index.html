@@ -1,11 +1,12 @@
 <!doctype html>
+<!-- 本页依据 templates/AI-INSTRUCTIONS.md 对 CloudTitle 源码与全部默认资源完成审计。 -->
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CloudTitle 云称号插件文档：支持称号仓库、商城、自定义称号、药水 Buff、MySQL/SQLite 与 PlaceholderAPI。">
+  <meta name="description" content="CloudTitle 云称号完整文档：称号仓库、商城、自定义称号、Buff、PAPI、MySQL/SQLite、全部命令与全部配置。">
   <meta name="theme-color" content="#161a17">
-  <title>CloudTitle · 云称号 | 云插件系列 Cloud</title>
+  <title>CloudTitle · 云称号完整文档 | 云插件系列 Cloud</title>
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,108 +15,342 @@
 </head>
 <body class="plugin-detail-body" data-plugin="cloudtitle">
   <div class="page-grid" aria-hidden="true"></div>
-
   <header class="topbar">
-    <a class="brand" href="../../" aria-label="返回云插件系列首页">
-      <span class="brand-mark cloud-mark"><i data-lucide="cloud"></i></span>
-      <span class="brand-copy"><strong>Cloud</strong><small>云插件系列</small></span>
-    </a>
-    <a class="search-trigger plugin-browser-link" href="../../">
-      <i data-lucide="layout-grid"></i><span>返回系列首页</span><kbd>1 Plugin</kbd>
-    </a>
-    <div class="topbar-actions">
-      <a class="icon-button" href="../../#support" aria-label="获取支持" data-tooltip="获取支持"><i data-lucide="message-circle-question"></i></a>
-      <button class="icon-button" id="themeToggle" type="button" aria-label="切换主题" data-tooltip="切换主题"><i data-lucide="sun"></i></button>
-      <button class="icon-button mobile-only" id="menuToggle" type="button" aria-label="打开插件目录" data-tooltip="插件目录"><i data-lucide="menu"></i></button>
-    </div>
+    <a class="brand" href="../../" aria-label="返回云插件系列首页"><span class="brand-mark cloud-mark"><i data-lucide="cloud"></i></span><span class="brand-copy"><strong>Cloud</strong><small>云插件系列</small></span></a>
+    <a class="search-trigger plugin-browser-link" href="../../"><i data-lucide="layout-grid"></i><span>返回系列首页</span><kbd>Modules</kbd></a>
+    <div class="topbar-actions"><a class="icon-button" href="../../#support" aria-label="获取支持" data-tooltip="获取支持"><i data-lucide="messages-square"></i></a><button class="icon-button" id="themeToggle" type="button" aria-label="切换主题" data-tooltip="切换主题"><i data-lucide="sun"></i></button><button class="icon-button mobile-only" id="menuToggle" type="button" aria-label="打开插件目录" data-tooltip="插件目录"><i data-lucide="menu"></i></button></div>
   </header>
-
   <div class="layout plugin-layout">
-    <aside class="sidebar plugin-sidebar" id="sidebar">
-      <nav aria-label="插件目录">
-        <div class="nav-group">
-          <p>文档</p>
-          <a class="nav-link" href="../../#overview"><i data-lucide="cloud"></i>系列概览</a>
-        </div>
-        <div class="nav-group">
-          <p>插件列表</p>
-          <div id="pluginSideNav" data-base="../../plugins"></div>
-        </div>
-        <div class="nav-group">
-          <p>帮助</p>
-          <a class="nav-link" href="../../#requirements"><i data-lucide="badge-check"></i>兼容环境</a>
-          <a class="nav-link" href="../../#faq"><i data-lucide="circle-help"></i>常见问题</a>
-          <a class="nav-link" href="../../#support"><i data-lucide="messages-square"></i>获取支持</a>
-        </div>
-      </nav>
-      <div class="sidebar-meta"><div><span>作者</span><strong>MoutainSeaL</strong></div><div><span>QQ</span><strong>3643203568</strong></div></div>
-    </aside>
+    <aside class="sidebar plugin-sidebar" id="sidebar"><nav aria-label="插件目录"><div class="nav-group"><p>文档</p><a class="nav-link" href="../../#overview"><i data-lucide="cloud"></i>系列概览</a></div><div class="nav-group"><p>插件列表</p><div id="pluginSideNav" data-base="../../plugins"></div></div><div class="nav-group"><p>帮助</p><a class="nav-link" href="../../#requirements"><i data-lucide="badge-check"></i>兼容环境</a><a class="nav-link" href="../../#faq"><i data-lucide="circle-help"></i>常见问题</a><a class="nav-link" href="../../#support"><i data-lucide="messages-square"></i>获取支持</a></div></nav><div class="sidebar-meta"><div><span>作者</span><strong>MoutainSeaL</strong></div><div><span>QQ</span><strong>3643203568</strong></div></div></aside>
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <main class="content plugin-content"><article>
+      <section class="plugin-detail-hero doc-section" id="overview" data-title="插件概览">
+        <div class="plugin-breadcrumb"><a href="../../">云插件系列</a><i data-lucide="chevron-right"></i><span>CloudTitle</span></div>
+        <div class="plugin-title-row"><span class="detail-icon blue"><i data-lucide="badge"></i></span><div><div class="eyebrow">玩法内容</div><h1>CloudTitle</h1><p>云称号</p></div></div>
+        <p class="plugin-intro">面向 Paper 1.21.11 生存服、会员服和群组服的完整称号系统。玩家通过仓库、商城与称号工坊管理身份展示，管理员可以组合金币、点券、权限、物品和 PAPI 数值条件，并为称号附加原版药水 Buff。</p>
+        <div class="hero-actions"><a class="primary-button" href="#installation">开始安装 <i data-lucide="arrow-down"></i></a><a class="secondary-button" href="#configuration"><i data-lucide="book-open"></i>查看全部配置</a></div>
+        <div class="plugin-meta-strip"><div><span>源码版本</span><strong>v1.0-SNAPSHOT</strong></div><div><span>支持服务端</span><strong>Paper</strong></div><div><span>Minecraft</span><strong>1.21.11</strong></div><div><span>作者</span><strong>MoutainSeaL</strong></div></div>
+      </section>
 
-    <main class="content plugin-content">
-      <article>
-        <section class="plugin-detail-hero doc-section" id="overview" data-title="插件概览">
-          <div class="plugin-breadcrumb"><a href="../../">云插件系列</a><i data-lucide="chevron-right"></i><span>CloudTitle</span></div>
-          <div class="plugin-title-row">
-            <span class="detail-icon blue"><i data-lucide="badge"></i></span>
-            <div><div class="eyebrow">玩法内容</div><h1>CloudTitle</h1><p>云称号</p></div>
-          </div>
-          <p class="plugin-intro">为生存服、会员服与跨服网络打造的一体化称号系统。玩家可以在可配置 GUI 中收集、购买、创建和佩戴称号，服务器可为称号附加原版药水增益，并通过 SQLite 或 MySQL 持久保存数据。</p>
-          <div class="hero-actions">
-            <a class="primary-button" href="#installation">开始安装 <i data-lucide="arrow-down"></i></a>
-            <a class="secondary-button" href="#installation"><i data-lucide="download"></i>获取 v1.0.0</a>
-          </div>
-          <div class="plugin-meta-strip">
-            <div><span>当前版本</span><strong>v1.0.0</strong></div>
-            <div><span>支持服务端</span><strong>Paper</strong></div>
-            <div><span>Minecraft</span><strong>1.21.11</strong></div>
-            <div><span>作者</span><strong>MoutainSeaL</strong></div>
-          </div>
-        </section>
+      <section class="doc-section prose-section" id="features" data-title="核心功能">
+        <div class="section-kicker">01 / Features</div><h2>核心功能与边界</h2><p class="lead">CloudTitle 独立运行，不依赖 CloudCore；外部插件仅在启用对应领取方式时需要。</p>
+        <div class="detail-feature-grid"><article><span>01</span><h3>仓库、商城与工坊</h3><p>三个独立 TrMenu 风格 GUI，支持字符布局、动态称号槽、MiniMessage、翻页、点击类型、命令动作和 0 - 5000ms 点击冷却。</p></article><article><span>02</span><h3>多条件称号获取</h3><p>支持 Vault 金币、PlayerPoints 点券、权限、免费领取、PAPI BigDecimal 数值比较，以及原版/CraftEngine 物品分段提交。</p></article><article><span>03</span><h3>显示与原版 Buff</h3><p>提供彩色、MiniMessage、纯文本、描述和 ID 变量。Buff 只清除插件记录的同等级效果，不删除其他系统后来施加的更高等级效果。</p></article><article><span>04</span><h3>SQLite / MySQL 跨服</h3><p>数据库 I/O 在专用异步线程执行。共享 MySQL 保存拥有状态、选择、自定义称号和提交进度；每台子服必须使用唯一 server-id。</p></article></div>
+        <h3 class="config-subheading">商城获取类型</h3><div class="table-wrap"><table><thead><tr><th>type</th><th>依赖</th><th>行为</th></tr></thead><tbody><tr><td><code>money</code></td><td>Vault + 经济插件</td><td>扣除 double 金币，数据库失败会退款。</td></tr><tr><td><code>points</code></td><td>PlayerPoints</td><td>价格向上取整为整数点券，数据库失败会退款。</td></tr><tr><td><code>permission</code></td><td>权限插件可选</td><td>检查 shop.permission，不扣费。</td></tr><tr><td><code>item</code></td><td>CraftEngine 物品才需要 CraftEngine</td><td>只扫描玩家主存储栏，可多次提交；完成时原子授予称号并清除进度。</td></tr><tr><td><code>papi</code></td><td>PlaceholderAPI</td><td>所有有效数值条件均满足才领取；未展开、非数值或 PAPI 缺失均拒绝。</td></tr><tr><td><code>free</code></td><td>无</td><td>直接授予称号。</td></tr></tbody></table></div>
+      </section>
 
-        <section class="doc-section prose-section" id="features" data-title="核心功能">
-          <div class="section-kicker">01 / Features</div><h2>核心功能</h2><p class="lead">从玩家获取到跨服同步，称号生命周期由一套系统完整管理。</p>
-          <div class="detail-feature-grid">
-            <article><span>01</span><h3>仓库与自定义 GUI</h3><p>称号仓库、商城和工坊分别使用独立配置文件，采用 TrMenu 风格字符布局，支持自定义图标、Lore、动作、翻页与点击冷却。</p></article>
-            <article><span>02</span><h3>六种获取条件</h3><p>支持 Vault 金币、PlayerPoints 点券、权限、免费领取、PAPI 数值判断，以及原版或 CraftEngine 物品分段提交。</p></article>
-            <article><span>03</span><h3>称号 Buff 与展示</h3><p>称号可附加多个原版药水效果，GUI 使用可配置中文名称；PlaceholderAPI 提供彩色、纯文本、描述和称号 ID 等变量。</p></article>
-            <article><span>04</span><h3>数据库与跨服</h3><p>单服可直接使用 SQLite，群组服可共享 MySQL；插件记录 Buff 来源服务器，处理切服时的药水效果清理和重新应用。</p></article>
-          </div>
-        </section>
+      <section class="doc-section prose-section" id="installation" data-title="安装与依赖">
+        <div class="section-kicker">02 / Installation</div><h2>安装环境与依赖</h2><p class="lead">精确目标为 Paper 1.21.11、Java 21。构建产物名固定为 CloudTitle-1.0.jar，源码版本当前为 1.0-SNAPSHOT。</p>
+        <div class="steps"><article class="step"><span class="step-number">1</span><div><h3>安装 JAR</h3><p>将 <code>CloudTitle-1.0.jar</code> 放入 <code>plugins/</code>，不要解压或二次打包。</p></div></article><article class="step"><span class="step-number">2</span><div><h3>首次联网启动</h3><p>Paper LibraryLoader 从 Maven Central 加载 HikariCP 6.3.0、SQLite JDBC 3.50.3.0 和 MySQL Connector/J 9.4.0。</p></div></article><article class="step"><span class="step-number">3</span><div><h3>选择存储并配置</h3><p>单服保持 SQLite；群组服在所有节点配置同一 MySQL 和不同 server-id，然后完整重启。</p></div></article></div>
+        <h3 class="config-subheading">依赖矩阵</h3><div class="table-wrap"><table><thead><tr><th>依赖</th><th>类型</th><th>缺失时行为</th></tr></thead><tbody><tr><td>Paper 1.21.11 / Java 21</td><td>运行环境</td><td>其他实现或版本未声明兼容，不应视为受支持。</td></tr><tr><td>HikariCP、SQLite JDBC、MySQL Connector/J</td><td>LibraryLoader 运行库</td><td>下载或数据库驱动初始化失败时插件停用。</td></tr><tr><td>Vault</td><td>软依赖</td><td>money 购买/创建返回经济服务不可用；其余功能正常。</td></tr><tr><td>PlayerPoints</td><td>软依赖，反射接入</td><td>points 购买/创建不可用；其余功能正常。</td></tr><tr><td>PlaceholderAPI 2.11.7+</td><td>软依赖</td><td>不注册 CloudTitle 变量，papi 类型称号不能领取。</td></tr><tr><td>CraftEngine</td><td>软依赖，反射接入</td><td>原版物品仍可兑换；含 CraftEngine 要求的称号拒绝提交。</td></tr></tbody></table></div>
+      </section>
 
-        <section class="doc-section prose-section" id="installation" data-title="安装方法">
-          <div class="section-kicker">02 / Installation</div><h2>安装方法</h2><p class="lead">运行环境为 Paper 1.21.11 与 Java 21，插件本身没有强制前置。</p>
-          <div class="steps">
-            <article class="step"><span class="step-number">1</span><div><h3>放入插件</h3><p>将 <code>CloudTitle-1.0.jar</code> 放入 Paper 服务端的 <code>plugins/</code> 目录。</p></div></article>
-            <article class="step"><span class="step-number">2</span><div><h3>首次启动</h3><p>启动服务端生成默认配置。数据库驱动由 Spigot LibraryLoader 下载，首次启动需允许访问 Maven Central。</p></div></article>
-            <article class="step"><span class="step-number">3</span><div><h3>配置并使用</h3><p>编辑 <code>plugins/CloudTitle/</code> 下的称号、GUI、语言和存储配置，然后执行 <code>/cloudtitle reload</code>。</p></div></article>
-          </div>
-          <div class="callout success"><i data-lucide="circle-check-big"></i><div><strong>按功能安装软依赖</strong><p>金币需要 Vault 与经济插件，点券需要 PlayerPoints，变量与 PAPI 条件需要 PlaceholderAPI，CraftEngine 物品兑换需要 CraftEngine。未使用对应功能时无需安装。</p></div></div>
-        </section>
+      <section class="doc-section prose-section" id="commands" data-title="命令与权限">
+        <div class="section-kicker">03 / Commands</div><h2>全部命令与权限</h2><p class="lead">主命令：<code>/cloudtitle</code>；别名：<code>/ct</code>、<code>/title</code>、<code>/称号</code>。玩家数据未加载完成时相关操作会返回 loading。</p>
+        <div class="table-wrap"><table><thead><tr><th>命令</th><th>执行者</th><th>权限</th><th>默认授权</th><th>行为</th></tr></thead><tbody><tr><td><code>/cloudtitle</code></td><td>玩家</td><td><code>cloudtitle.use</code></td><td>所有玩家</td><td>打开称号仓库第一页。</td></tr><tr><td><code>/cloudtitle shop</code></td><td>玩家</td><td><code>cloudtitle.use</code></td><td>所有玩家</td><td>打开商城第一页。</td></tr><tr><td><code>/cloudtitle custom</code></td><td>玩家</td><td><code>cloudtitle.use</code> + 配置的 custom-title.permission</td><td>默认所有玩家</td><td>打开工坊；功能关闭或额外权限不足时拒绝。</td></tr><tr><td><code>/cloudtitle set &lt;id&gt;</code></td><td>玩家</td><td><code>cloudtitle.use</code></td><td>所有玩家</td><td>仅能佩戴自己拥有且仍存在定义的称号。</td></tr><tr><td><code>/cloudtitle clear</code></td><td>玩家</td><td><code>cloudtitle.use</code></td><td>所有玩家</td><td>清空真实选择并移除插件记录的 Buff；PAPI 显示可回退默认称号。</td></tr><tr><td><code>/cloudtitle grant &lt;玩家&gt; &lt;id&gt;</code></td><td>玩家/控制台</td><td><code>cloudtitle.admin</code></td><td>OP</td><td>只能发放 titles.yml 中的静态称号，支持离线玩家 UUID。</td></tr><tr><td><code>/cloudtitle revoke &lt;玩家&gt; &lt;id&gt;</code></td><td>玩家/控制台</td><td><code>cloudtitle.admin</code></td><td>OP</td><td>回收拥有记录、自定义称号和提交进度；若正在佩戴则清除。</td></tr><tr><td><code>/cloudtitle reload</code></td><td>玩家/控制台</td><td><code>cloudtitle.admin</code></td><td>OP</td><td>关闭所有插件 GUI、取消工坊输入、重载配置并重应用在线玩家 Buff。</td></tr></tbody></table></div>
+        <h3 class="config-subheading">plugin.yml 权限</h3><div class="table-wrap"><table><thead><tr><th>权限</th><th>默认</th><th>用途</th></tr></thead><tbody><tr><td><code>cloudtitle.use</code></td><td>true</td><td>基础玩家命令及 GUI。</td></tr><tr><td><code>cloudtitle.admin</code></td><td>op</td><td>发放、回收、重载。</td></tr><tr><td><code>cloudtitle.custom</code></td><td>true</td><td>默认工坊权限；配置可换成其他节点。</td></tr><tr><td><code>cloudtitle.custom.bypass</code></td><td>op</td><td>默认自定义称号费用豁免。</td></tr></tbody></table></div>
+      </section>
 
-        <section class="doc-section prose-section" id="commands" data-title="命令与权限">
-          <div class="section-kicker">03 / Commands</div><h2>命令与权限</h2><p class="lead">主命令别名为 <code>/ct</code>、<code>/title</code> 和 <code>/称号</code>。</p>
-          <div class="table-wrap"><table><thead><tr><th>命令</th><th>功能</th><th>权限</th></tr></thead><tbody>
-            <tr><td><code>/cloudtitle</code></td><td>打开称号仓库</td><td><code>cloudtitle.use</code></td></tr>
-            <tr><td><code>/cloudtitle shop</code></td><td>打开称号商城</td><td><code>cloudtitle.use</code></td></tr>
-            <tr><td><code>/cloudtitle custom</code></td><td>打开自定义称号工坊</td><td><code>cloudtitle.use</code>、<code>cloudtitle.custom</code></td></tr>
-            <tr><td><code>/cloudtitle set &lt;id&gt;</code></td><td>佩戴已拥有的称号</td><td><code>cloudtitle.use</code></td></tr>
-            <tr><td><code>/cloudtitle clear</code></td><td>卸下当前称号</td><td><code>cloudtitle.use</code></td></tr>
-            <tr><td><code>/cloudtitle grant &lt;玩家&gt; &lt;id&gt;</code></td><td>向玩家发放称号</td><td><code>cloudtitle.admin</code></td></tr>
-            <tr><td><code>/cloudtitle revoke &lt;玩家&gt; &lt;id&gt;</code></td><td>回收玩家称号</td><td><code>cloudtitle.admin</code></td></tr>
-            <tr><td><code>/cloudtitle reload</code></td><td>重载配置并关闭插件 GUI</td><td><code>cloudtitle.admin</code></td></tr>
+      <section class="doc-section prose-section" id="placeholders" data-title="PAPI 与 GUI 变量">
+        <div class="section-kicker">04 / Placeholders</div><h2>PlaceholderAPI 与 GUI 变量</h2><p class="lead">PAPI 扩展只读取登录时异步加载的内存缓存，不会在聊天、TAB 或计分板刷新时同步访问数据库。</p>
+        <div class="table-wrap"><table><thead><tr><th>变量</th><th>返回值</th><th>默认称号回退</th></tr></thead><tbody><tr><td><code>%cloudtitle_title%</code><br><code>%cloudtitle_name%</code></td><td>Legacy § 颜色格式称号名</td><td>是</td></tr><tr><td><code>%cloudtitle_title_minimessage%</code><br><code>%cloudtitle_minimessage%</code></td><td>原始 MiniMessage 称号名</td><td>是</td></tr><tr><td><code>%cloudtitle_title_plain%</code><br><code>%cloudtitle_plain%</code></td><td>纯文本称号名</td><td>是</td></tr><tr><td><code>%cloudtitle_description%</code></td><td>纯文本描述，各行以空格连接</td><td>是</td></tr><tr><td><code>%cloudtitle_selected_id%</code></td><td>真实佩戴 ID；未佩戴返回空</td><td>否</td></tr><tr><td><code>%cloudtitle_displayed_id%</code></td><td>最终显示 ID</td><td>是</td></tr><tr><td><code>%cloudtitle_owned_count%</code></td><td>仓库称号数量</td><td>不适用</td></tr></tbody></table></div>
+        <div class="callout warning"><i data-lucide="triangle-alert"></i><div><strong>缓存尚未就绪</strong><p>玩家未登录、数据仍在加载或 PlaceholderAPI 未安装时不会查询数据库；变量可能返回空字符串，未知参数交由 PlaceholderAPI 按未知变量处理。</p></div></div>
+        <h3 class="config-subheading">GUI 可用变量</h3><div class="table-wrap"><table><thead><tr><th>范围</th><th>变量</th></tr></thead><tbody><tr><td>通用</td><td><code>%player%</code>、<code>%page%</code>、<code>%max_page%</code>、<code>%owned_count%</code></td></tr><tr><td>动态称号</td><td><code>%title_id%</code>、<code>%title_name%</code>、<code>%title_material%</code>、<code>%title_description%</code>、<code>%title_buffs%</code>、<code>%title_cost%</code>、<code>%title_requirement%</code>、<code>%title_status%</code></td></tr><tr><td>工坊</td><td><code>%custom_name%</code>、<code>%custom_description%</code>、<code>%custom_cost%</code></td></tr><tr><td>自定义获取条件</td><td><code>%progress%</code>、<code>%items%</code>、<code>%papi_conditions%</code></td></tr></tbody></table></div>
+        <h3 class="config-subheading">GUI 动作语法</h3><div class="table-wrap"><table><thead><tr><th>动作</th><th>说明</th></tr></thead><tbody><tr><td><code>close</code></td><td>关闭当前库存。</td></tr><tr><td><code>menu: previous / next / warehouse / shop / custom</code></td><td>翻页或切换菜单；无上一页/下一页时对应图标自动隐藏。</td></tr><tr><td><code>title: select / buy / clear</code></td><td>佩戴、购买/提交、卸下称号。</td></tr><tr><td><code>custom: edit-name / edit-description / create</code></td><td>进入聊天输入或确认创建。</td></tr><tr><td><code>message: &lt;MiniMessage&gt;</code></td><td>向玩家直接发送无语言前缀消息。</td></tr><tr><td><code>player: &lt;命令&gt;</code></td><td>玩家身份执行命令，可带或不带开头 /。</td></tr><tr><td><code>console: &lt;命令&gt;</code></td><td>控制台身份执行命令。</td></tr><tr><td><code>sound: &lt;音效&gt; [音量] [音调]</code></td><td>播放 Registry 音效；无命名空间时自动使用 minecraft。</td></tr></tbody></table></div>
+      </section>
+
+      <section class="doc-section prose-section" id="configuration" data-title="全部配置">
+        <div class="section-kicker">05 / Configuration</div><h2>全部配置项</h2><p class="lead">当前版本新安装会生成 7 个 YAML。以下参考表覆盖固定叶子路径和动态映射允许的全部子项，随后原样展示每份默认文件。</p>
+        <div class="callout warning"><i data-lucide="shield-alert"></i><div><strong>敏感信息</strong><p>storage.yml 的 MySQL 密码和连接参数可能包含凭据。本文只展示源码自带占位值；部署时请替换，并避免上传真实配置。</p></div></div>
+        <h3 class="config-subheading">配置文件清单</h3><div class="table-wrap"><table><thead><tr><th>文件</th><th>用途</th><th>主要生效方式</th><th>敏感项</th></tr></thead><tbody><tr><td><code>config.yml</code></td><td>服务器 ID、默认称号、自定义称号、Buff</td><td>多数重载；server-id 和调度周期重启</td><td>否</td></tr><tr><td><code>storage.yml</code></td><td>SQLite/MySQL 和表名</td><td>重启</td><td>是</td></tr><tr><td><code>titles.yml</code></td><td>全部静态称号、Buff、商城条件</td><td>重载</td><td>否</td></tr><tr><td><code>gui/warehouse.yml</code></td><td>称号仓库</td><td>重载</td><td>否</td></tr><tr><td><code>gui/shop.yml</code></td><td>称号商城</td><td>重载</td><td>否</td></tr><tr><td><code>gui/custom.yml</code></td><td>称号工坊</td><td>重载</td><td>否</td></tr><tr><td><code>lang/zh_CN.yml</code></td><td>消息、条件模板、Buff 中文名</td><td>重载</td><td>否</td></tr></tbody></table></div>
+        <h3 class="config-subheading">配置项完整参考</h3>
+          <h4>主配置 config.yml</h4>
+          <div class="table-wrap config-reference-table"><table><thead><tr><th>文件与路径</th><th>类型</th><th>默认值</th><th>允许值/范围</th><th>必填</th><th>生效方式</th><th>完整说明</th></tr></thead><tbody>
+            <tr><td><code>config.yml</code><br><code>server-id</code></td><td>字符串</td><td><code>lobby-1</code></td><td>非空服务器唯一标识；跨服节点不可重复</td><td>否</td><td>重启服务器</td><td>写入 Buff 负责服务器字段；TitleService 启动时读取一次，重载不会更新当前实例。</td></tr>
+            <tr><td><code>config.yml</code><br><code>default-language</code></td><td>字符串</td><td><code>zh_CN</code></td><td>lang 目录中已有文件的文件名（不含 .yml）</td><td>否</td><td>执行 /cloudtitle reload</td><td>选择语言文件；目标文件不存在时回退到 lang/zh_CN.yml，并继承内置中文默认键。</td></tr>
+            <tr><td><code>config.yml</code><br><code>default-title.enabled</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家未佩戴称号时是否让显示类 PAPI 变量回退到默认称号；不会授予称号或施加 Buff。</td></tr>
+            <tr><td><code>config.yml</code><br><code>default-title.id</code></td><td>字符串</td><td><code>resident</code></td><td>titles.yml 中存在的称号 ID</td><td>否</td><td>执行 /cloudtitle reload</td><td>默认显示称号 ID；resident 缺失时有内置居民称号回退，其他不存在 ID 会记录警告并返回空显示。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.enabled</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否允许打开称号工坊；关闭后玩家收到 custom-disabled。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.permission</code></td><td>字符串</td><td><code>cloudtitle.custom</code></td><td>任意权限节点；空字符串表示不额外检查</td><td>否</td><td>执行 /cloudtitle reload</td><td>进入自定义称号 GUI 所需权限；仍需基础权限 cloudtitle.use。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.bypass-permission</code></td><td>字符串</td><td><code>cloudtitle.custom.bypass</code></td><td>任意权限节点；空字符串表示无豁免</td><td>否</td><td>执行 /cloudtitle reload</td><td>拥有此权限时创建自定义称号不扣除金币或点券。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.currency</code></td><td>枚举字符串</td><td><code>money</code></td><td><code>money</code> / <code>points</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>自定义称号计费类型。解析器也认识 permission、item、papi、free；这些不属于正常自定义计费方案，未知值会回退为 free。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.price</code></td><td>数字</td><td><code>1000.0</code></td><td>建议大于等于 0；小于等于 0 时不扣费</td><td>否</td><td>执行 /cloudtitle reload</td><td>创建一个自定义称号的价格；点券会向上取整为整数。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.max-name-length</code></td><td>整数</td><td><code>16</code></td><td>建议大于等于 1，按 Unicode 码点计数</td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家聊天输入的称号名称最大长度；超限或空白会拒绝。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.max-description-length</code></td><td>整数</td><td><code>64</code></td><td>建议大于等于 1，按 Unicode 码点计数</td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家聊天输入的称号描述最大长度；超限或空白会拒绝。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.allow-minimessage</code></td><td>布尔值</td><td><code>false</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>为 false 时转义玩家输入中的 MiniMessage 标签；为 true 时允许玩家提交格式标签，应仅授予可信玩家。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.name-prefix</code></td><td>MiniMessage 字符串</td><td><code>&lt;gray&gt;[&lt;/gray&gt;</code></td><td>任意 MiniMessage 文本</td><td>否</td><td>执行 /cloudtitle reload</td><td>持久化自定义称号前附加的文本。</td></tr>
+            <tr><td><code>config.yml</code><br><code>custom-title.name-suffix</code></td><td>MiniMessage 字符串</td><td><code>&lt;gray&gt;]&lt;/gray&gt;</code></td><td>任意 MiniMessage 文本</td><td>否</td><td>执行 /cloudtitle reload</td><td>持久化自定义称号后附加的文本。</td></tr>
+            <tr><td><code>config.yml</code><br><code>buffs.cross-server-cleanup</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload；影响之后登录的玩家</td><td>登录时是否按数据库记录清除上一服务器施加的同等级药水效果。</td></tr>
+            <tr><td><code>config.yml</code><br><code>buffs.refresh-ticks</code></td><td>整数（tick）</td><td><code>100</code></td><td>调度周期启动时最小 20；效果时长按 max(80, 值 + 40)</td><td>否</td><td>重启服务器</td><td>Buff 刷新周期。重载会影响新效果时长，但已创建的定时任务周期不会改变，因此修改后应重启。</td></tr>
           </tbody></table></div>
-        </section>
 
-        <section class="doc-section prose-section" id="configuration" data-title="配置示例">
-          <div class="section-kicker">04 / Configuration</div><h2>配置示例</h2><p class="lead">称号定义位于 <code>plugins/CloudTitle/titles.yml</code>。以下称号要求玩家等级达到 30，并提供速度 I 增益。</p>
-          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> titles.yml</span><button class="copy-button" id="copyConfig" type="button" aria-label="复制配置"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code id="configCode">titles:
-  experienced_adventurer:
-    name: "&lt;gradient:#60A5FA:#2563EB&gt;&lt;bold&gt;资深冒险家&lt;/bold&gt;&lt;/gradient&gt;"
+          <h4>存储配置 storage.yml</h4>
+          <div class="table-wrap config-reference-table"><table><thead><tr><th>文件与路径</th><th>类型</th><th>默认值</th><th>允许值/范围</th><th>必填</th><th>生效方式</th><th>完整说明</th></tr></thead><tbody>
+            <tr><td><code>storage.yml</code><br><code>type</code></td><td>枚举字符串</td><td><code>sqlite</code></td><td><code>sqlite</code> / <code>mysql</code>；其他值按 SQLite</td><td>否</td><td>重启服务器</td><td>选择数据后端；数据库对象只在插件启用时创建。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>tables.players</code></td><td>字符串</td><td><code>ct_players</code></td><td>正则 [A-Za-z][A-Za-z0-9_]{0,47}；四张表名必须互不相同</td><td>否</td><td>重启服务器</td><td>自定义玩家当前称号及跨服 Buff 状态表名；修改会创建新表，不会迁移旧数据。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>tables.owned</code></td><td>字符串</td><td><code>ct_owned</code></td><td>正则 [A-Za-z][A-Za-z0-9_]{0,47}；四张表名必须互不相同</td><td>否</td><td>重启服务器</td><td>自定义玩家拥有的称号表名；修改会创建新表，不会迁移旧数据。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>tables.custom-titles</code></td><td>字符串</td><td><code>ct_custom_titles</code></td><td>正则 [A-Za-z][A-Za-z0-9_]{0,47}；四张表名必须互不相同</td><td>否</td><td>重启服务器</td><td>自定义玩家创建的自定义称号表名；修改会创建新表，不会迁移旧数据。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>tables.item-progress</code></td><td>字符串</td><td><code>ct_item_progress</code></td><td>正则 [A-Za-z][A-Za-z0-9_]{0,47}；四张表名必须互不相同</td><td>否</td><td>重启服务器</td><td>自定义物品分段提交进度表名；修改会创建新表，不会迁移旧数据。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>sqlite.file</code></td><td>相对路径字符串</td><td><code>data.db</code></td><td>插件数据目录内的文件名或相对路径</td><td>否</td><td>重启服务器</td><td>SQLite 数据库文件路径；SQLite 连接池固定为 1。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.host</code></td><td>字符串</td><td><code>127.0.0.1</code></td><td>MySQL 主机名或 IP</td><td>使用 MySQL 时需要</td><td>重启服务器</td><td>MySQL 服务器地址。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.port</code></td><td>整数</td><td><code>3306</code></td><td>有效 TCP 端口，通常 1 - 65535</td><td>使用 MySQL 时需要</td><td>重启服务器</td><td>MySQL 服务端口，源码未额外夹取范围。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.database</code></td><td>字符串</td><td><code>minecraft</code></td><td>已存在且账号可访问的数据库名</td><td>使用 MySQL 时需要</td><td>重启服务器</td><td>保存 CloudTitle 表的数据库。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.username</code></td><td>字符串（敏感）</td><td><code>root</code></td><td>具备建表、索引及读写权限的账号</td><td>使用 MySQL 时需要</td><td>重启服务器</td><td>MySQL 用户名；生产环境不要使用高权限示例账号。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.password</code></td><td>字符串（敏感）</td><td><code>password</code></td><td>数据库密码；默认只是示例占位值</td><td>使用 MySQL 时需要</td><td>重启服务器</td><td>MySQL 密码。不要将真实密码提交到公开仓库或发布页面。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.parameters</code></td><td>字符串（可能敏感）</td><td><code>useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</code></td><td>JDBC URL 查询参数，不含前导 ?</td><td>否</td><td>重启服务器</td><td>直接拼接到 MySQL JDBC URL；生产环境应按数据库 SSL 和时区策略调整。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.pool-size</code></td><td>整数</td><td><code>10</code></td><td>运行时最小 2</td><td>否</td><td>重启服务器</td><td>Hikari 最大连接数；异步存储线程数为 max(2, pool-size / 2)。</td></tr>
+            <tr><td><code>storage.yml</code><br><code>mysql.connection-timeout-ms</code></td><td>长整数（毫秒）</td><td><code>10000</code></td><td>HikariCP 接受的正超时值，建议不低于 250</td><td>否</td><td>重启服务器</td><td>获取数据库连接的等待超时。无效值可能令数据库初始化失败并停用插件。</td></tr>
+          </tbody></table></div>
+
+          <h4>称号配置 titles.yml</h4>
+          <div class="table-wrap config-reference-table"><table><thead><tr><th>文件与路径</th><th>类型</th><th>默认值</th><th>允许值/范围</th><th>必填</th><th>生效方式</th><th>完整说明</th></tr></thead><tbody>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;</code></td><td>映射</td><td><code>内置 resident、newcomer、dirt_collector、experienced_adventurer、vip、pro、mvp、elite</code></td><td>ID 建议仅使用安全短字符串且不超过数据库 VARCHAR(96)</td><td>否</td><td>执行 /cloudtitle reload</td><td>一个静态称号定义。管理员 grant 只能发放此处存在的 ID；自定义称号存于数据库。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.name</code></td><td>MiniMessage 字符串</td><td><code>&lt;id&gt;</code></td><td>任意 MiniMessage 文本</td><td>否</td><td>执行 /cloudtitle reload</td><td>称号显示名称；缺失时使用 ID。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.description[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>GUI 与 PAPI 描述内容。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.icon</code></td><td>Material 字符串</td><td><code>NAME_TAG</code></td><td>有效且非空气的 Bukkit Material</td><td>否</td><td>执行 /cloudtitle reload</td><td>GUI 图标；无效值回退 NAME_TAG。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.buffs.&lt;药水效果&gt;.amplifier</code></td><td>整数</td><td><code>0</code></td><td>大于等于 0；0 表示 I 级</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版 PotionEffectType 的等级索引；负数夹为 0，未知效果整项跳过并警告。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.buffs.&lt;药水效果&gt;.particles</code></td><td>布尔值</td><td><code>false</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否显示药水粒子。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.buffs.&lt;药水效果&gt;.icon</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否在客户端 HUD 显示效果图标。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.enabled</code></td><td>布尔值</td><td><code>false</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否允许通过商城领取；关闭后仍可由管理员 grant。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.display</code></td><td>布尔值</td><td><code>与 enabled 相同</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否出现在商城 GUI；隐藏不等于禁用购买接口。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.type</code></td><td>枚举字符串</td><td><code>free</code></td><td><code>money</code> / <code>points</code> / <code>permission</code> / <code>item</code> / <code>papi</code> / <code>free</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>获取类型；未知值回退 free。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.price</code></td><td>数字</td><td><code>0</code></td><td>大于等于 0，负数夹为 0</td><td>否</td><td>执行 /cloudtitle reload</td><td>money 或 points 类型价格；点券向上取整。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.permission</code></td><td>字符串</td><td><code>空字符串</code></td><td>任意权限节点</td><td>permission 类型需要</td><td>执行 /cloudtitle reload</td><td>permission 类型玩家必须拥有的权限。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.bypass-permission</code></td><td>字符串</td><td><code>空字符串</code></td><td>任意权限节点；空表示禁用豁免</td><td>否</td><td>执行 /cloudtitle reload</td><td>拥有后跳过费用、权限、物品或 PAPI 条件。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.requirement-display</code></td><td>MiniMessage 字符串</td><td><code>空字符串</code></td><td>支持 %progress%、%items%、%papi_conditions%</td><td>否</td><td>执行 /cloudtitle reload</td><td>覆盖商城自动生成的获取条件；空值按 shop.type 使用语言模板。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.items[]</code></td><td>对象列表</td><td><code>[]</code></td><td>item 类型至少一条有效记录</td><td>item 类型需要</td><td>执行 /cloudtitle reload</td><td>物品兑换要求列表；多项要求全部完成后授予称号，提交进度持久化。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.items[].source</code></td><td>枚举字符串</td><td><code>vanilla</code></td><td><code>vanilla</code> / <code>craftengine</code> / <code>ce</code>；其他值按 vanilla</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品来源。原版识别会排除同材质的 CraftEngine 自定义物品。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.items[].id</code></td><td>字符串</td><td><code>空字符串</code></td><td>原版 Material 或 CraftEngine namespace:id</td><td>是</td><td>执行 /cloudtitle reload</td><td>物品 ID；无效原版材质、空气、空 ID 或缺少命名空间的 CraftEngine ID 会跳过。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.items[].amount</code></td><td>整数</td><td><code>0</code></td><td>大于 0</td><td>是</td><td>执行 /cloudtitle reload</td><td>总提交数量；玩家可多次分段提交。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.items[].display</code></td><td>MiniMessage 字符串</td><td><code>物品 ID</code></td><td>任意 MiniMessage 文本</td><td>否</td><td>执行 /cloudtitle reload</td><td>商城进度中显示的物品名称。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.papi-conditions[]</code></td><td>对象列表</td><td><code>[]</code></td><td>papi 类型至少一条有效记录；多条全部满足</td><td>papi 类型需要</td><td>执行 /cloudtitle reload</td><td>PlaceholderAPI 数值条件列表。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.papi-conditions[].placeholder</code></td><td>字符串</td><td><code>空字符串</code></td><td>包含 % 的 PAPI 变量</td><td>是</td><td>执行 /cloudtitle reload</td><td>传给 PlaceholderAPI 解析；未展开或非数值时条件失败。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.papi-conditions[].operator</code></td><td>枚举字符串</td><td><code>&gt;=</code></td><td><code>&gt;</code> / <code>&gt;=</code> / <code>≥</code> / <code>&lt;</code> / <code>&lt;=</code> / <code>≤</code> / <code>==</code> / <code>=</code> / <code>!=</code> / <code>≠</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>BigDecimal 数值比较运算符；无效条件会跳过。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.papi-conditions[].value</code></td><td>十进制数</td><td><code>无</code></td><td>BigDecimal 可解析数值</td><td>是</td><td>执行 /cloudtitle reload</td><td>领取目标值。</td></tr>
+            <tr><td><code>titles.yml</code><br><code>titles.&lt;id&gt;.shop.papi-conditions[].display</code></td><td>MiniMessage 字符串</td><td><code>placeholder 原文</code></td><td>任意 MiniMessage 文本</td><td>否</td><td>执行 /cloudtitle reload</td><td>商城中该条件的友好描述。</td></tr>
+          </tbody></table></div>
+
+          <h4>GUI 配置通用结构</h4>
+          <div class="table-wrap config-reference-table"><table><thead><tr><th>文件与路径</th><th>类型</th><th>默认值</th><th>允许值/范围</th><th>必填</th><th>生效方式</th><th>完整说明</th></tr></thead><tbody>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Title</code></td><td>MiniMessage 字符串</td><td><code>&lt;gradient:#67E8F9:#38BDF8&gt;&lt;bold&gt;云称号&lt;/bold&gt;&lt;/gradient&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;仓库</code></td><td>支持当前菜单变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>库存 GUI 标题；旧版“云世界”默认标题会在精确匹配时自动迁移。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Options.Click-Cooldown-Millis</code></td><td>长整数（毫秒）</td><td><code>300</code></td><td>0 - 5000，超出范围会夹取</td><td>否</td><td>执行 /cloudtitle reload</td><td>同一玩家在该 GUI 内触发已绑定动作的最小间隔；0 表示关闭限制。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Layout[]</code></td><td>字符串列表</td><td><code>见完整默认文件</code></td><td>1 - 6 行，每行 9 个字符</td><td>运行需要</td><td>执行 /cloudtitle reload</td><td>字符布局。加载会警告非法长度；渲染时空布局回退一行空格，行数夹为 1 - 6，并自动补齐或截断到 9 字符。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Type</code></td><td>枚举字符串</td><td><code>static</code></td><td><code>static</code> / <code>title</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>title 表示动态称号槽；仓库和商城至少需要一个动态槽，否则菜单不打开。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Material</code></td><td>字符串</td><td><code>动态槽回退称号图标；静态槽回退 PAPER</code></td><td>有效 Material 或 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品材质；静态无效材质回退 PAPER，动态无效材质回退称号 icon。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Amount</code></td><td>整数</td><td><code>1</code></td><td>1 - 64，超出范围夹取</td><td>否</td><td>执行 /cloudtitle reload</td><td>图标堆叠数量。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Name</code></td><td>MiniMessage 字符串</td><td><code>单个空格</code></td><td>支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品显示名，插件自动禁用斜体。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Lore[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本；支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品 Lore；包含 %title_description% 的行会按描述行数展开。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Glow</code></td><td>布尔值</td><td><code>false</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否强制显示附魔光效。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Custom-Model-Data</code></td><td>整数</td><td><code>未设置</code></td><td>任意整数</td><td>否</td><td>执行 /cloudtitle reload</td><td>可选自定义模型数据。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Display.Item-Flags[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>Bukkit ItemFlag 枚举名</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品标记；未知值忽略并写入警告。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Selected.Glow</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>仓库动态称号被选中时是否显示光效。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Selected.Lore-Append[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本；支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>仓库动态称号被选中时追加的 Lore。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Actions.all[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>all 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Actions.left[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>left 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Actions.right[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>right 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Actions.shift-left[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>shift-left 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/warehouse.yml</code><br><code>Icons.&lt;字符&gt;.Actions.shift-right[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>shift-right 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Title</code></td><td>MiniMessage 字符串</td><td><code>&lt;gradient:#FDE68A:#F59E0B&gt;&lt;bold&gt;云称号&lt;/bold&gt;&lt;/gradient&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;商城</code></td><td>支持当前菜单变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>库存 GUI 标题；旧版“云世界”默认标题会在精确匹配时自动迁移。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Options.Click-Cooldown-Millis</code></td><td>长整数（毫秒）</td><td><code>300</code></td><td>0 - 5000，超出范围会夹取</td><td>否</td><td>执行 /cloudtitle reload</td><td>同一玩家在该 GUI 内触发已绑定动作的最小间隔；0 表示关闭限制。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Layout[]</code></td><td>字符串列表</td><td><code>见完整默认文件</code></td><td>1 - 6 行，每行 9 个字符</td><td>运行需要</td><td>执行 /cloudtitle reload</td><td>字符布局。加载会警告非法长度；渲染时空布局回退一行空格，行数夹为 1 - 6，并自动补齐或截断到 9 字符。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Type</code></td><td>枚举字符串</td><td><code>static</code></td><td><code>static</code> / <code>title</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>title 表示动态称号槽；仓库和商城至少需要一个动态槽，否则菜单不打开。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Material</code></td><td>字符串</td><td><code>动态槽回退称号图标；静态槽回退 PAPER</code></td><td>有效 Material 或 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品材质；静态无效材质回退 PAPER，动态无效材质回退称号 icon。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Amount</code></td><td>整数</td><td><code>1</code></td><td>1 - 64，超出范围夹取</td><td>否</td><td>执行 /cloudtitle reload</td><td>图标堆叠数量。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Name</code></td><td>MiniMessage 字符串</td><td><code>单个空格</code></td><td>支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品显示名，插件自动禁用斜体。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Lore[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本；支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品 Lore；包含 %title_description% 的行会按描述行数展开。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Glow</code></td><td>布尔值</td><td><code>false</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否强制显示附魔光效。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Custom-Model-Data</code></td><td>整数</td><td><code>未设置</code></td><td>任意整数</td><td>否</td><td>执行 /cloudtitle reload</td><td>可选自定义模型数据。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Display.Item-Flags[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>Bukkit ItemFlag 枚举名</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品标记；未知值忽略并写入警告。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Selected.Glow</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>仓库动态称号被选中时是否显示光效。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Selected.Lore-Append[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本；支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>仓库动态称号被选中时追加的 Lore。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Actions.all[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>all 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Actions.left[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>left 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Actions.right[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>right 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Actions.shift-left[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>shift-left 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/shop.yml</code><br><code>Icons.&lt;字符&gt;.Actions.shift-right[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>shift-right 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Title</code></td><td>MiniMessage 字符串</td><td><code>&lt;gradient:#C4B5FD:#F0ABFC&gt;&lt;bold&gt;云称号&lt;/bold&gt;&lt;/gradient&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;工坊</code></td><td>支持当前菜单变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>库存 GUI 标题；旧版“云世界”默认标题会在精确匹配时自动迁移。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Options.Click-Cooldown-Millis</code></td><td>长整数（毫秒）</td><td><code>500</code></td><td>0 - 5000，超出范围会夹取</td><td>否</td><td>执行 /cloudtitle reload</td><td>同一玩家在该 GUI 内触发已绑定动作的最小间隔；0 表示关闭限制。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Layout[]</code></td><td>字符串列表</td><td><code>见完整默认文件</code></td><td>1 - 6 行，每行 9 个字符</td><td>运行需要</td><td>执行 /cloudtitle reload</td><td>字符布局。加载会警告非法长度；渲染时空布局回退一行空格，行数夹为 1 - 6，并自动补齐或截断到 9 字符。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Type</code></td><td>枚举字符串</td><td><code>static</code></td><td><code>static</code> / <code>title</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>title 表示动态称号槽；仓库和商城至少需要一个动态槽，否则菜单不打开。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Material</code></td><td>字符串</td><td><code>动态槽回退称号图标；静态槽回退 PAPER</code></td><td>有效 Material 或 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品材质；静态无效材质回退 PAPER，动态无效材质回退称号 icon。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Amount</code></td><td>整数</td><td><code>1</code></td><td>1 - 64，超出范围夹取</td><td>否</td><td>执行 /cloudtitle reload</td><td>图标堆叠数量。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Name</code></td><td>MiniMessage 字符串</td><td><code>单个空格</code></td><td>支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品显示名，插件自动禁用斜体。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Lore[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本；支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品 Lore；包含 %title_description% 的行会按描述行数展开。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Glow</code></td><td>布尔值</td><td><code>false</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>是否强制显示附魔光效。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Custom-Model-Data</code></td><td>整数</td><td><code>未设置</code></td><td>任意整数</td><td>否</td><td>执行 /cloudtitle reload</td><td>可选自定义模型数据。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Display.Item-Flags[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>Bukkit ItemFlag 枚举名</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品标记；未知值忽略并写入警告。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Selected.Glow</code></td><td>布尔值</td><td><code>true</code></td><td><code>true / false</code></td><td>否</td><td>执行 /cloudtitle reload</td><td>仓库动态称号被选中时是否显示光效。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Selected.Lore-Append[]</code></td><td>字符串列表</td><td><code>[]</code></td><td>MiniMessage 文本；支持 GUI 变量</td><td>否</td><td>执行 /cloudtitle reload</td><td>仓库动态称号被选中时追加的 Lore。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Actions.all[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>all 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Actions.left[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>left 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Actions.right[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>right 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Actions.shift-left[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>shift-left 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+            <tr><td><code>gui/custom.yml</code><br><code>Icons.&lt;字符&gt;.Actions.shift-right[]</code></td><td>字符串或字符串列表</td><td><code>[]</code></td><td>见 GUI 动作列表</td><td>否</td><td>执行 /cloudtitle reload</td><td>shift-right 点击动作；精确点击类型未配置时回退到 all。</td></tr>
+          </tbody></table></div>
+
+          <h4>语言配置 lang/zh_CN.yml</h4>
+          <div class="table-wrap config-reference-table"><table><thead><tr><th>文件与路径</th><th>类型</th><th>默认值</th><th>允许值/范围</th><th>必填</th><th>生效方式</th><th>完整说明</th></tr></thead><tbody>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>prefix</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;dark_gray&gt;[&lt;aqua&gt;云称号&lt;/aqua&gt;]&lt;/dark_gray&gt; &quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>发送普通语言消息时附加的 MiniMessage 前缀；旧版默认“云世界称号”会精确迁移为“云称号”。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>no-permission</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;你没有权限这样做。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>权限检查失败。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>player-only</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;该命令只能由玩家使用。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>控制台执行玩家专用命令。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>loading</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;称号数据正在加载，请稍候。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家异步数据尚未加载。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>storage-error</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;存储服务发生错误，请联系管理员。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>数据库操作失败。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>title-equipped</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;已佩戴称号：%title%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>成功佩戴称号，%title% 为称号名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>title-cleared</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;已卸下当前称号。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>成功卸下称号。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>title-obtained</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;已获得称号：%title%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>成功获得称号，%title% 为称号名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>title-owned</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;你已经拥有该称号。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家已经拥有目标称号。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>title-not-owned</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;你尚未拥有该称号。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家尝试佩戴未拥有称号。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>title-not-found</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;找不到称号：%id%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>称号 ID 不存在，%id% 为输入 ID。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>insufficient-money</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;金币不足，需要 %amount%。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>Vault 金币不足，%amount% 为价格。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>insufficient-points</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;点券不足，需要 %amount%。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>PlayerPoints 点券不足，%amount% 为价格。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>economy-unavailable</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;对应的经济服务不可用。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>目标经济服务未安装或未接入。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>requirement-missing</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;你不满足领取该称号的权限条件。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>权限型称号条件不满足。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>papi-unavailable</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;PlaceholderAPI 当前不可用，无法检查称号变量条件。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>PAPI 条件需要 PlaceholderAPI 但当前不可用。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>papi-config-error</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;该称号没有配置有效的 PAPI 数值条件，请联系管理员。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>PAPI 类型称号没有有效条件。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>papi-requirement-missing</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;你的变量数值尚未达到该称号的领取条件。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>至少一项 PAPI 数值条件不满足。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>purchase-failed</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;购买失败，没有扣除费用。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>扣费服务返回失败。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>item-config-error</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;该称号没有配置有效的兑换物品，请联系管理员。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>item 类型没有有效物品要求。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>item-submit-processing</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;上一次物品提交仍在处理中，请稍候。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>同一玩家同一称号的上次提交尚未完成。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>item-submit-empty</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;背包中没有可提交的物品。当前进度：%progress%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>背包没有可提交物品，%progress% 为当前进度。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>item-submit-progress</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;本次已提交 %submitted% 个物品。&lt;/green&gt; &lt;gray&gt;当前进度：%progress%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>分段提交成功，%submitted% 为本次数量，%progress% 为累计进度。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>craftengine-unavailable</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;该称号需要 CraftEngine 物品，但 CraftEngine API 当前不可用。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>要求 CraftEngine 物品但 API 不可用。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-disabled</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;自定义称号功能未启用。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>自定义称号功能关闭。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-input-name</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;请在聊天中输入称号名称，输入 cancel 取消。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>提示聊天输入名称。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-input-description</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;请在聊天中输入称号描述，输入 cancel 取消。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>提示聊天输入描述。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-input-cancelled</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;gray&gt;已取消本次输入。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>玩家输入 cancel 取消。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-name-required</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;请先设置称号名称。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>确认创建前名称为空。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-invalid-length</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;输入长度必须在 1 到 %max% 个字符之间。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>输入为空或超限，%max% 为最大码点数。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-created</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;自定义称号创建成功并已放入仓库。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>自定义称号已持久化。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>custom-failed</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;自定义称号创建失败。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>自定义称号持久化失败。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>reload-success</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;配置与称号定义已重新加载。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>配置重载成功。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>command-help[]</code></td><td>字符串列表</td><td><code>&quot;&lt;aqua&gt;/cloudtitle&lt;/aqua&gt; &lt;gray&gt;- 打开称号仓库&quot; | &quot;&lt;aqua&gt;/cloudtitle shop&lt;/aqua&gt; &lt;gray&gt;- 打开称号商城&quot; | &quot;&lt;aqua&gt;/cloudtitle custom&lt;/aqua&gt; &lt;gray&gt;- 打开称号自定义&quot; | &quot;&lt;aqua&gt;/cloudtitle set &lt;id&gt;&lt;/aqua&gt; &lt;gray&gt;- 佩戴称号&quot; | &quot;&lt;aqua&gt;/cloudtitle clear&lt;/aqua&gt; &lt;gray&gt;- 卸下称号&quot; | &quot;&lt;aqua&gt;/cloudtitle grant/revoke &lt;玩家&gt; &lt;id&gt;&lt;/aqua&gt; &lt;gray&gt;- 管理称号&quot; | &quot;&lt;aqua&gt;/cloudtitle reload&lt;/aqua&gt; &lt;gray&gt;- 重载配置&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>完整命令帮助列表；help 输出不附加 prefix。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>admin-success</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;操作成功：%player% / %id%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>管理员操作完成，%player% 和 %id% 为目标。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>admin-failed</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;red&gt;操作失败，请检查称号 ID 或后台日志。&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>管理员发放或回收失败。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>buff-display[]</code></td><td>字符串列表</td><td><code></code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>插件语言消息模板；缺失时继承内置 zh_CN 默认值。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>buff-display.none</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;gray&gt;无增益&lt;/gray&gt;&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>称号没有 Buff 时的 GUI 文本。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>buff-display.format</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;aqua&gt;%effect%&lt;/aqua&gt; &lt;white&gt;%level%&lt;/white&gt;&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>单个 Buff 格式，支持 %effect% 和 %level%。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>buff-display.separator</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;dark_gray&gt;、&lt;/dark_gray&gt; &quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>多个 Buff 之间的连接文本。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements[]</code></td><td>字符串列表</td><td><code></code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>插件语言消息模板；缺失时继承内置 zh_CN 默认值。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements.money</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;gold&gt;&lt;bold&gt;金币购买&lt;/bold&gt;&lt;/gold&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;%amount% 金币&lt;/white&gt;&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>金币获取条件模板，支持 %amount%。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements.points</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;aqua&gt;&lt;bold&gt;点券兑换&lt;/bold&gt;&lt;/aqua&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;%amount% 点券&lt;/white&gt;&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>点券获取条件模板，支持 %amount%。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements.permission</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;light_purple&gt;&lt;bold&gt;权限解锁&lt;/bold&gt;&lt;/light_purple&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;满足指定权限&lt;/white&gt;&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>权限获取条件模板，支持 %permission%。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements.item</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;yellow&gt;&lt;bold&gt;物品提交&lt;/bold&gt;&lt;/yellow&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; %items%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>物品提交条件模板，支持 %items% 和 %progress%。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements.papi</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;blue&gt;&lt;bold&gt;变量条件&lt;/bold&gt;&lt;/blue&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; %papi_conditions%&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>PAPI 条件模板，支持 %papi_conditions%。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>shop-requirements.free</code></td><td>MiniMessage 字符串</td><td><code>&quot;&lt;green&gt;&lt;bold&gt;免费领取&lt;/bold&gt;&lt;/green&gt;&quot;</code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>免费领取条件模板。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects[]</code></td><td>字符串列表</td><td><code></code></td><td>任意 MiniMessage 文本；保留所需 %变量%</td><td>否</td><td>执行 /cloudtitle reload</td><td>插件语言消息模板；缺失时继承内置 zh_CN 默认值。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.speed</code></td><td>MiniMessage 字符串</td><td><code>&quot;速度&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>speed</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.slowness</code></td><td>MiniMessage 字符串</td><td><code>&quot;缓慢&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>slowness</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.haste</code></td><td>MiniMessage 字符串</td><td><code>&quot;急迫&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>haste</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.mining_fatigue</code></td><td>MiniMessage 字符串</td><td><code>&quot;挖掘疲劳&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>mining_fatigue</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.strength</code></td><td>MiniMessage 字符串</td><td><code>&quot;力量&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>strength</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.instant_health</code></td><td>MiniMessage 字符串</td><td><code>&quot;瞬间治疗&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>instant_health</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.instant_damage</code></td><td>MiniMessage 字符串</td><td><code>&quot;瞬间伤害&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>instant_damage</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.jump_boost</code></td><td>MiniMessage 字符串</td><td><code>&quot;跳跃提升&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>jump_boost</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.nausea</code></td><td>MiniMessage 字符串</td><td><code>&quot;反胃&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>nausea</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.regeneration</code></td><td>MiniMessage 字符串</td><td><code>&quot;生命恢复&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>regeneration</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.resistance</code></td><td>MiniMessage 字符串</td><td><code>&quot;抗性提升&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>resistance</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.fire_resistance</code></td><td>MiniMessage 字符串</td><td><code>&quot;抗火&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>fire_resistance</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.water_breathing</code></td><td>MiniMessage 字符串</td><td><code>&quot;水下呼吸&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>water_breathing</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.invisibility</code></td><td>MiniMessage 字符串</td><td><code>&quot;隐身&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>invisibility</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.blindness</code></td><td>MiniMessage 字符串</td><td><code>&quot;失明&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>blindness</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.night_vision</code></td><td>MiniMessage 字符串</td><td><code>&quot;夜视&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>night_vision</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.hunger</code></td><td>MiniMessage 字符串</td><td><code>&quot;饥饿&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>hunger</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.weakness</code></td><td>MiniMessage 字符串</td><td><code>&quot;虚弱&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>weakness</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.poison</code></td><td>MiniMessage 字符串</td><td><code>&quot;中毒&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>poison</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.wither</code></td><td>MiniMessage 字符串</td><td><code>&quot;凋零&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>wither</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.health_boost</code></td><td>MiniMessage 字符串</td><td><code>&quot;生命提升&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>health_boost</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.absorption</code></td><td>MiniMessage 字符串</td><td><code>&quot;伤害吸收&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>absorption</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.saturation</code></td><td>MiniMessage 字符串</td><td><code>&quot;饱和&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>saturation</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.glowing</code></td><td>MiniMessage 字符串</td><td><code>&quot;发光&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>glowing</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.levitation</code></td><td>MiniMessage 字符串</td><td><code>&quot;飘浮&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>levitation</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.luck</code></td><td>MiniMessage 字符串</td><td><code>&quot;幸运&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>luck</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.unluck</code></td><td>MiniMessage 字符串</td><td><code>&quot;霉运&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>unluck</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.slow_falling</code></td><td>MiniMessage 字符串</td><td><code>&quot;缓降&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>slow_falling</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.conduit_power</code></td><td>MiniMessage 字符串</td><td><code>&quot;潮涌能量&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>conduit_power</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.dolphins_grace</code></td><td>MiniMessage 字符串</td><td><code>&quot;海豚的恩惠&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>dolphins_grace</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.bad_omen</code></td><td>MiniMessage 字符串</td><td><code>&quot;不祥之兆&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>bad_omen</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.hero_of_the_village</code></td><td>MiniMessage 字符串</td><td><code>&quot;村庄英雄&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>hero_of_the_village</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.darkness</code></td><td>MiniMessage 字符串</td><td><code>&quot;黑暗&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>darkness</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.trial_omen</code></td><td>MiniMessage 字符串</td><td><code>&quot;试炼之兆&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>trial_omen</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.raid_omen</code></td><td>MiniMessage 字符串</td><td><code>&quot;袭击之兆&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>raid_omen</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.wind_charged</code></td><td>MiniMessage 字符串</td><td><code>&quot;蓄风&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>wind_charged</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.weaving</code></td><td>MiniMessage 字符串</td><td><code>&quot;盘丝&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>weaving</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.oozing</code></td><td>MiniMessage 字符串</td><td><code>&quot;渗浆&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>oozing</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.infested</code></td><td>MiniMessage 字符串</td><td><code>&quot;寄生&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>infested</code> 的 GUI 中文名。</td></tr>
+            <tr><td><code>lang/zh_CN.yml</code><br><code>potion-effects.breath_of_the_nautilus</code></td><td>MiniMessage 字符串</td><td><code>&quot;鹦鹉螺之息&quot;</code></td><td>任意中文或 MiniMessage 显示名</td><td>否</td><td>执行 /cloudtitle reload</td><td>原版药水效果 <code>breath_of_the_nautilus</code> 的 GUI 中文名。</td></tr>
+          </tbody></table></div>
+        <div class="callout success"><i data-lucide="circle-check-big"></i><div><strong>完整默认文件</strong><p>以下内容直接读取当前源码 src/main/resources，保留键顺序、注释和层级。每个代码块均可单独复制。</p></div></div>
+          <h3 class="config-subheading">完整 config.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> config.yml · 完整文件</span><button class="copy-button" id="copyConfig" type="button" aria-label="复制 config.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code id="configCode">server-id: &quot;lobby-1&quot;
+default-language: &quot;zh_CN&quot;
+
+# 玩家没有佩戴称号时，仅在 PAPI 显示中使用该称号。
+# 不会自动授予、佩戴或施加 Buff。
+default-title:
+  enabled: true
+  id: resident
+
+custom-title:
+  enabled: true
+  permission: &quot;cloudtitle.custom&quot;
+  bypass-permission: &quot;cloudtitle.custom.bypass&quot;
+  currency: &quot;money&quot;
+  price: 1000.0
+  max-name-length: 16
+  max-description-length: 64
+  allow-minimessage: false
+  name-prefix: &quot;&lt;gray&gt;[&lt;/gray&gt;&quot;
+  name-suffix: &quot;&lt;gray&gt;]&lt;/gray&gt;&quot;
+buffs:
+  cross-server-cleanup: true
+  refresh-ticks: 100</code></pre></div>
+
+          <h3 class="config-subheading">完整 storage.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> storage.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 storage.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code>type: sqlite
+
+# 修改名称后会创建新的空表，不会自动迁移旧表数据。
+# 只能使用字母、数字和下划线，且必须以字母开头。
+tables:
+  players: ct_players
+  owned: ct_owned
+  custom-titles: ct_custom_titles
+  item-progress: ct_item_progress
+
+sqlite:
+  file: data.db
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  database: minecraft
+  username: root
+  password: &quot;password&quot;
+  parameters: &quot;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&quot;
+  pool-size: 10
+  connection-timeout-ms: 10000</code></pre></div>
+
+          <h3 class="config-subheading">完整 titles.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> titles.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 titles.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code>titles:
+  resident:
+    name: &quot;&lt;gradient:#CBD5E1:#94A3B8&gt;&lt;bold&gt;云世界居民&lt;/bold&gt;&lt;/gradient&gt;&quot;
     description:
-      - "&lt;white&gt;献给不断积累经验、磨炼自我的冒险家。"
-      - "&lt;gray&gt;玩家等级达到 30 级后即可领取。"
-    icon: EXPERIENCE_BOTTLE
+      - &quot;&lt;white&gt;生活在云世界中的普通居民。&quot;
+      - &quot;&lt;gray&gt;每一段传奇，都从平凡的名字开始。&quot;
+    icon: COMPASS
+    buffs: {}
+    shop:
+      enabled: false
+      display: false
+      type: free
+      price: 0
+      permission: &quot;&quot;
+      bypass-permission: &quot;&quot;
+      requirement-display: &quot;&quot;
+
+  newcomer:
+    name: &quot;&lt;gradient:#86EFAC:#22C55E&gt;&lt;bold&gt;初来乍到&lt;/bold&gt;&lt;/gradient&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;记录你踏入云世界的第一段旅程。&quot;
+      - &quot;&lt;gray&gt;愿每一次启程，都能遇见新的风景。&quot;
+    icon: PAPER
     buffs:
       SPEED:
         amplifier: 0
@@ -123,33 +358,497 @@
         icon: true
     shop:
       enabled: true
+      # false 时不出现在商城，但管理员仍可通过 grant 发放。
+      display: true
+      type: money
+      price: 500.0
+      permission: &quot;&quot;
+      bypass-permission: &quot;cloudtitle.shop.newcomer.bypass&quot;
+      # 留空时根据 type 自动生成中文获取条件。
+      requirement-display: &quot;&quot;
+
+  dirt_collector:
+    name: &quot;&lt;gradient:#A16207:#713F12&gt;&lt;bold&gt;泥土收藏家&lt;/bold&gt;&lt;/gradient&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;平凡的泥土，也值得被认真收藏。&quot;
+      - &quot;&lt;gray&gt;累计提交 1000 个泥土后即可获得。&quot;
+    icon: DIRT
+    buffs:
+      LUCK:
+        amplifier: 0
+        particles: false
+        icon: true
+    shop:
+      enabled: true
+      display: true
+      type: item
+      price: 0
+      permission: &quot;&quot;
+      bypass-permission: &quot;cloudtitle.shop.dirt_collector.bypass&quot;
+      # 留空时自动显示每种物品的“已提交/总需求”进度。
+      requirement-display: &quot;&quot;
+      items:
+        - source: vanilla
+          id: DIRT
+          amount: 1000
+          display: &quot;&lt;white&gt;泥土&lt;/white&gt;&quot;
+        # CraftEngine 物品示例：
+        # - source: craftengine
+        #   id: your_namespace:your_item
+        #   amount: 100
+        #   display: &quot;&lt;aqua&gt;自定义物品&lt;/aqua&gt;&quot;
+
+  experienced_adventurer:
+    name: &quot;&lt;gradient:#60A5FA:#2563EB&gt;&lt;bold&gt;资深冒险家&lt;/bold&gt;&lt;/gradient&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;献给不断积累经验、磨炼自我的冒险家。&quot;
+      - &quot;&lt;gray&gt;玩家等级达到 30 级后即可领取。&quot;
+    icon: EXPERIENCE_BOTTLE
+    buffs: {}
+    shop:
+      enabled: true
       display: true
       type: papi
-      bypass-permission: "cloudtitle.shop.experienced_adventurer.bypass"
-      requirement-display: ""
+      price: 0
+      permission: &quot;&quot;
+      bypass-permission: &quot;cloudtitle.shop.experienced_adventurer.bypass&quot;
+      # 可使用 %papi_conditions% 显示实时判断结果。
+      requirement-display: &quot;&quot;
       papi-conditions:
-        - placeholder: "%player_level%"
-          operator: ">="
+        - placeholder: &quot;%player_level%&quot;
+          operator: &quot;&gt;=&quot;
           value: 30
-          display: "&lt;white&gt;玩家等级达到 30 级&lt;/white&gt;"</code></pre></div>
-          <div class="callout success"><i data-lucide="database"></i><div><strong>跨服部署</strong><p>所有子服连接同一个 MySQL 数据库，并为每台服务器设置唯一的 <code>server-id</code>。表名可在 <code>storage.yml</code> 中分别自定义。</p></div></div>
-        </section>
-      </article>
+          display: &quot;&lt;white&gt;玩家等级达到 30 级&lt;/white&gt;&quot;
 
-      <nav class="plugin-pager" aria-label="插件详情分页">
-        <a href="../../"><span><i data-lucide="arrow-left"></i>返回首页</span><strong>云插件系列</strong></a>
-        <a href="#configuration"><span>查看示例<i data-lucide="arrow-right"></i></span><strong>配置称号</strong></a>
-      </nav>
-      <footer><div class="footer-brand"><span class="brand-mark small cloud-mark"><i data-lucide="cloud"></i></span><strong>云插件系列 Cloud</strong></div><p>由 <strong>MoutainSeaL</strong> 维护 · QQ 3643203568</p><a href="#overview">返回顶部 <i data-lucide="arrow-up"></i></a></footer>
+  vip:
+    name: &quot;&lt;gradient:#FDE68A:#F59E0B&gt;&lt;bold&gt;VIP&lt;/bold&gt;&lt;/gradient&gt; &lt;white&gt;会员&lt;/white&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;云世界 VIP 会员专属身份象征。&quot;
+      - &quot;&lt;gray&gt;感谢你的支持，愿冒险始终闪耀。&quot;
+    icon: GOLD_INGOT
+    buffs:
+      HASTE:
+        amplifier: 0
+        particles: false
+        icon: true
+    shop:
+      enabled: true
+      display: true
+      type: permission
+      price: 0
+      permission: &quot;group.vip&quot;
+      bypass-permission: &quot;&quot;
+      requirement-display: &quot;&lt;gold&gt;&lt;bold&gt;VIP 专属&lt;/bold&gt;&lt;/gold&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;拥有 VIP 会员身份&lt;/white&gt;&quot;
+
+  pro:
+    name: &quot;&lt;gradient:#67E8F9:#0EA5E9&gt;&lt;bold&gt;PRO&lt;/bold&gt;&lt;/gradient&gt; &lt;white&gt;会员&lt;/white&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;属于资深冒险家的进阶会员称号。&quot;
+      - &quot;&lt;gray&gt;以专业之名，探索更辽阔的云世界。&quot;
+    icon: DIAMOND
+    buffs:
+      SPEED:
+        amplifier: 0
+        particles: false
+        icon: true
+      HASTE:
+        amplifier: 0
+        particles: false
+        icon: true
+    shop:
+      enabled: true
+      display: true
+      type: permission
+      price: 0
+      permission: &quot;group.pro&quot;
+      bypass-permission: &quot;&quot;
+      requirement-display: &quot;&lt;aqua&gt;&lt;bold&gt;PRO 专属&lt;/bold&gt;&lt;/aqua&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;拥有 PRO 会员身份&lt;/white&gt;&quot;
+
+  mvp:
+    name: &quot;&lt;gradient:#C4B5FD:#A855F7&gt;&lt;bold&gt;MVP&lt;/bold&gt;&lt;/gradient&gt; &lt;white&gt;会员&lt;/white&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;献给云世界中卓越而耀眼的冒险家。&quot;
+      - &quot;&lt;gray&gt;你的足迹，正在书写不凡的篇章。&quot;
+    icon: AMETHYST_SHARD
+    buffs:
+      SPEED:
+        amplifier: 0
+        particles: false
+        icon: true
+      HASTE:
+        amplifier: 1
+        particles: false
+        icon: true
+    shop:
+      enabled: true
+      display: true
+      type: permission
+      price: 0
+      permission: &quot;group.mvp&quot;
+      bypass-permission: &quot;&quot;
+      requirement-display: &quot;&lt;light_purple&gt;&lt;bold&gt;MVP 专属&lt;/bold&gt;&lt;/light_purple&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;拥有 MVP 会员身份&lt;/white&gt;&quot;
+
+  elite:
+    name: &quot;&lt;gradient:#FCA5A5:#EF4444&gt;&lt;bold&gt;ELITE&lt;/bold&gt;&lt;/gradient&gt; &lt;white&gt;精英会员&lt;/white&gt;&quot;
+    description:
+      - &quot;&lt;white&gt;云世界精英冒险家的至高身份标志。&quot;
+      - &quot;&lt;gray&gt;荣耀与实力汇聚于此，锋芒无可替代。&quot;
+    icon: NETHER_STAR
+    buffs:
+      SPEED:
+        amplifier: 1
+        particles: false
+        icon: true
+      HASTE:
+        amplifier: 1
+        particles: false
+        icon: true
+      RESISTANCE:
+        amplifier: 0
+        particles: false
+        icon: true
+    shop:
+      enabled: true
+      display: true
+      type: permission
+      price: 0
+      permission: &quot;group.elite&quot;
+      bypass-permission: &quot;&quot;
+      requirement-display: &quot;&lt;red&gt;&lt;bold&gt;ELITE 专属&lt;/bold&gt;&lt;/red&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;拥有 ELITE 精英身份&lt;/white&gt;&quot;</code></pre></div>
+
+          <h3 class="config-subheading">完整 gui/warehouse.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> gui/warehouse.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 gui/warehouse.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code># TrMenu 风格字符布局：每行必须为 9 个字符，最多 6 行。
+Title: &quot;&lt;gradient:#67E8F9:#38BDF8&gt;&lt;bold&gt;云称号&lt;/bold&gt;&lt;/gradient&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;仓库&quot;
+Options:
+  # 0 表示关闭限制，最大支持 5000 毫秒。
+  Click-Cooldown-Millis: 300
+Layout:
+  - &quot;#########&quot;
+  - &quot;#TTTTTTT#&quot;
+  - &quot;#TTTTTTT#&quot;
+  - &quot;#TTTTTTT#&quot;
+  - &quot;#P#SUC#N#&quot;
+  - &quot;#########&quot;
+
+Icons:
+  '#':
+    Display:
+      Material: BLACK_STAINED_GLASS_PANE
+      Name: &quot; &quot;
+  'T':
+    Type: title
+    Display:
+      Material: &quot;%title_material%&quot;
+      Name: &quot;&lt;gradient:#F8FAFC:#BAE6FD&gt;&lt;bold&gt;✦&lt;/bold&gt;&lt;/gradient&gt; %title_name%&quot;
+      Lore:
+        - &quot;&lt;dark_gray&gt;━━━━━━━━━━━━━━━━━━━━&quot;
+        - &quot;&lt;gray&gt;称号介绍&quot;
+        - &quot;&lt;dark_gray&gt;  ▪&lt;/dark_gray&gt; &lt;white&gt;%title_description%&quot;
+        - &quot;&quot;
+        - &quot;&lt;gray&gt;增益效果 &lt;dark_gray&gt;│&lt;/dark_gray&gt; &lt;aqua&gt;%title_buffs%&quot;
+        - &quot;&lt;gray&gt;当前状态 &lt;dark_gray&gt;│&lt;/dark_gray&gt; %title_status%&quot;
+        - &quot;&lt;dark_gray&gt;━━━━━━━━━━━━━━━━━━━━&quot;
+        - &quot;&lt;yellow&gt;▶ 点击佩戴此称号&quot;
+    Selected:
+      Glow: true
+      Lore-Append:
+        - &quot;&lt;green&gt;✔ 该称号正在展示&quot;
+    Actions:
+      all:
+        - &quot;title: select&quot;
+  'P':
+    Display:
+      Material: SPECTRAL_ARROW
+      Name: &quot;&lt;yellow&gt;&lt;bold&gt;← 上一页&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;当前页数：&lt;white&gt;%page%&lt;/white&gt;/&lt;white&gt;%max_page%&quot;
+    Actions:
+      all: [&quot;menu: previous&quot;]
+  'N':
+    Display:
+      Material: SPECTRAL_ARROW
+      Name: &quot;&lt;yellow&gt;&lt;bold&gt;下一页 →&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;当前页数：&lt;white&gt;%page%&lt;/white&gt;/&lt;white&gt;%max_page%&quot;
+    Actions:
+      all: [&quot;menu: next&quot;]
+  'S':
+    Display:
+      Material: EMERALD
+      Name: &quot;&lt;green&gt;&lt;bold&gt;称号商城&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;浏览金币、点券和权限称号&quot;
+        - &quot;&quot;
+        - &quot;&lt;green&gt;▶ 点击进入&quot;
+    Actions:
+      all: [&quot;menu: shop&quot;]
+  'U':
+    Display:
+      Material: RED_DYE
+      Name: &quot;&lt;red&gt;&lt;bold&gt;卸下当前称号&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;保留拥有权，仅停止展示和 Buff&quot;
+        - &quot;&quot;
+        - &quot;&lt;red&gt;▶ 点击卸下&quot;
+    Actions:
+      all: [&quot;title: clear&quot;]
+  'C':
+    Display:
+      Material: NAME_TAG
+      Name: &quot;&lt;aqua&gt;&lt;bold&gt;自定义称号&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;打造只属于你的个性称号&quot;
+        - &quot;&lt;gray&gt;当前拥有：&lt;white&gt;%owned_count%&lt;/white&gt; 个&quot;
+        - &quot;&quot;
+        - &quot;&lt;aqua&gt;▶ 点击设计&quot;
+    Actions:
+      all: [&quot;menu: custom&quot;]</code></pre></div>
+
+          <h3 class="config-subheading">完整 gui/shop.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> gui/shop.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 gui/shop.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code>Title: &quot;&lt;gradient:#FDE68A:#F59E0B&gt;&lt;bold&gt;云称号&lt;/bold&gt;&lt;/gradient&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;商城&quot;
+Options:
+  Click-Cooldown-Millis: 300
+Layout:
+  - &quot;#########&quot;
+  - &quot;#TTTTTTT#&quot;
+  - &quot;#TTTTTTT#&quot;
+  - &quot;#TTTTTTT#&quot;
+  - &quot;#P###B#N#&quot;
+  - &quot;#########&quot;
+
+Icons:
+  '#':
+    Display:
+      Material: BROWN_STAINED_GLASS_PANE
+      Name: &quot; &quot;
+  'T':
+    Type: title
+    Display:
+      Material: &quot;%title_material%&quot;
+      Name: &quot;&lt;gradient:#FEF3C7:#FBBF24&gt;&lt;bold&gt;✦&lt;/bold&gt;&lt;/gradient&gt; %title_name%&quot;
+      Lore:
+        - &quot;&lt;dark_gray&gt;━━━━━━━━━━━━━━━━━━━━&quot;
+        - &quot;&lt;gray&gt;称号故事&quot;
+        - &quot;&lt;dark_gray&gt;  ▪&lt;/dark_gray&gt; &lt;white&gt;%title_description%&quot;
+        - &quot;&quot;
+        - &quot;&lt;gray&gt;增益效果 &lt;dark_gray&gt;│&lt;/dark_gray&gt; &lt;aqua&gt;%title_buffs%&quot;
+        - &quot;&lt;gray&gt;获取方式 &lt;dark_gray&gt;│&lt;/dark_gray&gt; %title_requirement%&quot;
+        - &quot;&lt;dark_gray&gt;━━━━━━━━━━━━━━━━━━━━&quot;
+        - &quot;&lt;yellow&gt;▶ 点击购买或领取&quot;
+    Actions:
+      all:
+        - &quot;title: buy&quot;
+  'P':
+    Display:
+      Material: SPECTRAL_ARROW
+      Name: &quot;&lt;yellow&gt;&lt;bold&gt;← 上一页&lt;/bold&gt;&quot;
+      Lore: [&quot;&lt;gray&gt;第 &lt;white&gt;%page%&lt;/white&gt;/&lt;white&gt;%max_page%&lt;/white&gt; 页&quot;]
+    Actions:
+      all: [&quot;menu: previous&quot;]
+  'N':
+    Display:
+      Material: SPECTRAL_ARROW
+      Name: &quot;&lt;yellow&gt;&lt;bold&gt;下一页 →&lt;/bold&gt;&quot;
+      Lore: [&quot;&lt;gray&gt;第 &lt;white&gt;%page%&lt;/white&gt;/&lt;white&gt;%max_page%&lt;/white&gt; 页&quot;]
+    Actions:
+      all: [&quot;menu: next&quot;]
+  'B':
+    Display:
+      Material: CHEST
+      Name: &quot;&lt;aqua&gt;&lt;bold&gt;返回称号仓库&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;查看并佩戴已经拥有的称号&quot;
+        - &quot;&quot;
+        - &quot;&lt;aqua&gt;▶ 点击返回&quot;
+    Actions:
+      all: [&quot;menu: warehouse&quot;]</code></pre></div>
+
+          <h3 class="config-subheading">完整 gui/custom.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> gui/custom.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 gui/custom.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code>Title: &quot;&lt;gradient:#C4B5FD:#F0ABFC&gt;&lt;bold&gt;云称号&lt;/bold&gt;&lt;/gradient&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;工坊&quot;
+Options:
+  Click-Cooldown-Millis: 500
+Layout:
+  - &quot;#########&quot;
+  - &quot;#N##V##D#&quot;
+  - &quot;#########&quot;
+  - &quot;#B#####C#&quot;
+  - &quot;#########&quot;
+
+Icons:
+  '#':
+    Display:
+      Material: PURPLE_STAINED_GLASS_PANE
+      Name: &quot; &quot;
+  'V':
+    Display:
+      Material: NAME_TAG
+      Glow: true
+      Name: &quot;&lt;gradient:#DDD6FE:#F5D0FE&gt;&lt;bold&gt;称号预览&lt;/bold&gt;&lt;/gradient&gt;&quot;
+      Lore:
+        - &quot;&lt;dark_gray&gt;━━━━━━━━━━━━━━━━━━━━&quot;
+        - &quot;&lt;gray&gt;展示名称&quot;
+        - &quot;  &lt;white&gt;%custom_name%&quot;
+        - &quot;&quot;
+        - &quot;&lt;gray&gt;称号描述&quot;
+        - &quot;  &lt;white&gt;%custom_description%&quot;
+        - &quot;&lt;dark_gray&gt;━━━━━━━━━━━━━━━━━━━━&quot;
+        - &quot;&lt;gray&gt;创建花费：&lt;yellow&gt;%custom_cost%&quot;
+  'N':
+    Display:
+      Material: OAK_HANGING_SIGN
+      Name: &quot;&lt;yellow&gt;&lt;bold&gt;编辑称号名称&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;当前：&lt;white&gt;%custom_name%&quot;
+        - &quot;&quot;
+        - &quot;&lt;yellow&gt;▶ 点击后在聊天栏输入&quot;
+    Actions:
+      all: [&quot;custom: edit-name&quot;]
+  'D':
+    Display:
+      Material: WRITABLE_BOOK
+      Name: &quot;&lt;yellow&gt;&lt;bold&gt;编辑称号描述&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;当前：&lt;white&gt;%custom_description%&quot;
+        - &quot;&quot;
+        - &quot;&lt;yellow&gt;▶ 点击后在聊天栏输入&quot;
+    Actions:
+      all: [&quot;custom: edit-description&quot;]
+  'B':
+    Display:
+      Material: ARROW
+      Name: &quot;&lt;red&gt;&lt;bold&gt;返回仓库&lt;/bold&gt;&quot;
+      Lore: [&quot;&lt;gray&gt;本次未确认的内容将暂时保留&quot;]
+    Actions:
+      all: [&quot;menu: warehouse&quot;]
+  'C':
+    Display:
+      Material: LIME_CONCRETE
+      Name: &quot;&lt;green&gt;&lt;bold&gt;确认创建&lt;/bold&gt;&quot;
+      Lore:
+        - &quot;&lt;gray&gt;创建后称号会存入你的仓库&quot;
+        - &quot;&lt;gray&gt;费用：&lt;yellow&gt;%custom_cost%&quot;
+        - &quot;&quot;
+        - &quot;&lt;green&gt;▶ 点击确认&quot;
+    Actions:
+      all: [&quot;custom: create&quot;]</code></pre></div>
+
+          <h3 class="config-subheading">完整 lang/zh_CN.yml</h3>
+          <div class="code-block"><div class="code-header"><span><i data-lucide="file-code-2"></i> lang/zh_CN.yml · 完整文件</span><button class="copy-button" type="button" aria-label="复制 lang/zh_CN.yml"><i data-lucide="copy"></i><span>复制</span></button></div><pre><code>prefix: &quot;&lt;dark_gray&gt;[&lt;aqua&gt;云称号&lt;/aqua&gt;]&lt;/dark_gray&gt; &quot;
+no-permission: &quot;&lt;red&gt;你没有权限这样做。&quot;
+player-only: &quot;&lt;red&gt;该命令只能由玩家使用。&quot;
+loading: &quot;&lt;yellow&gt;称号数据正在加载，请稍候。&quot;
+storage-error: &quot;&lt;red&gt;存储服务发生错误，请联系管理员。&quot;
+title-equipped: &quot;&lt;green&gt;已佩戴称号：%title%&quot;
+title-cleared: &quot;&lt;green&gt;已卸下当前称号。&quot;
+title-obtained: &quot;&lt;green&gt;已获得称号：%title%&quot;
+title-owned: &quot;&lt;yellow&gt;你已经拥有该称号。&quot;
+title-not-owned: &quot;&lt;red&gt;你尚未拥有该称号。&quot;
+title-not-found: &quot;&lt;red&gt;找不到称号：%id%&quot;
+insufficient-money: &quot;&lt;red&gt;金币不足，需要 %amount%。&quot;
+insufficient-points: &quot;&lt;red&gt;点券不足，需要 %amount%。&quot;
+economy-unavailable: &quot;&lt;red&gt;对应的经济服务不可用。&quot;
+requirement-missing: &quot;&lt;red&gt;你不满足领取该称号的权限条件。&quot;
+papi-unavailable: &quot;&lt;red&gt;PlaceholderAPI 当前不可用，无法检查称号变量条件。&quot;
+papi-config-error: &quot;&lt;red&gt;该称号没有配置有效的 PAPI 数值条件，请联系管理员。&quot;
+papi-requirement-missing: &quot;&lt;red&gt;你的变量数值尚未达到该称号的领取条件。&quot;
+purchase-failed: &quot;&lt;red&gt;购买失败，没有扣除费用。&quot;
+item-config-error: &quot;&lt;red&gt;该称号没有配置有效的兑换物品，请联系管理员。&quot;
+item-submit-processing: &quot;&lt;yellow&gt;上一次物品提交仍在处理中，请稍候。&quot;
+item-submit-empty: &quot;&lt;yellow&gt;背包中没有可提交的物品。当前进度：%progress%&quot;
+item-submit-progress: &quot;&lt;green&gt;本次已提交 %submitted% 个物品。&lt;/green&gt; &lt;gray&gt;当前进度：%progress%&quot;
+craftengine-unavailable: &quot;&lt;red&gt;该称号需要 CraftEngine 物品，但 CraftEngine API 当前不可用。&quot;
+custom-disabled: &quot;&lt;red&gt;自定义称号功能未启用。&quot;
+custom-input-name: &quot;&lt;yellow&gt;请在聊天中输入称号名称，输入 cancel 取消。&quot;
+custom-input-description: &quot;&lt;yellow&gt;请在聊天中输入称号描述，输入 cancel 取消。&quot;
+custom-input-cancelled: &quot;&lt;gray&gt;已取消本次输入。&quot;
+custom-name-required: &quot;&lt;red&gt;请先设置称号名称。&quot;
+custom-invalid-length: &quot;&lt;red&gt;输入长度必须在 1 到 %max% 个字符之间。&quot;
+custom-created: &quot;&lt;green&gt;自定义称号创建成功并已放入仓库。&quot;
+custom-failed: &quot;&lt;red&gt;自定义称号创建失败。&quot;
+reload-success: &quot;&lt;green&gt;配置与称号定义已重新加载。&quot;
+command-help:
+  - &quot;&lt;aqua&gt;/cloudtitle&lt;/aqua&gt; &lt;gray&gt;- 打开称号仓库&quot;
+  - &quot;&lt;aqua&gt;/cloudtitle shop&lt;/aqua&gt; &lt;gray&gt;- 打开称号商城&quot;
+  - &quot;&lt;aqua&gt;/cloudtitle custom&lt;/aqua&gt; &lt;gray&gt;- 打开称号自定义&quot;
+  - &quot;&lt;aqua&gt;/cloudtitle set &lt;id&gt;&lt;/aqua&gt; &lt;gray&gt;- 佩戴称号&quot;
+  - &quot;&lt;aqua&gt;/cloudtitle clear&lt;/aqua&gt; &lt;gray&gt;- 卸下称号&quot;
+  - &quot;&lt;aqua&gt;/cloudtitle grant/revoke &lt;玩家&gt; &lt;id&gt;&lt;/aqua&gt; &lt;gray&gt;- 管理称号&quot;
+  - &quot;&lt;aqua&gt;/cloudtitle reload&lt;/aqua&gt; &lt;gray&gt;- 重载配置&quot;
+admin-success: &quot;&lt;green&gt;操作成功：%player% / %id%&quot;
+admin-failed: &quot;&lt;red&gt;操作失败，请检查称号 ID 或后台日志。&quot;
+
+# GUI 中的 Buff 显示格式。药水名称可在下方逐项修改。
+buff-display:
+  none: &quot;&lt;gray&gt;无增益&lt;/gray&gt;&quot;
+  format: &quot;&lt;aqua&gt;%effect%&lt;/aqua&gt; &lt;white&gt;%level%&lt;/white&gt;&quot;
+  separator: &quot;&lt;dark_gray&gt;、&lt;/dark_gray&gt; &quot;
+
+# 商城未设置 requirement-display 时使用的默认获取条件。
+shop-requirements:
+  money: &quot;&lt;gold&gt;&lt;bold&gt;金币购买&lt;/bold&gt;&lt;/gold&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;%amount% 金币&lt;/white&gt;&quot;
+  points: &quot;&lt;aqua&gt;&lt;bold&gt;点券兑换&lt;/bold&gt;&lt;/aqua&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;%amount% 点券&lt;/white&gt;&quot;
+  permission: &quot;&lt;light_purple&gt;&lt;bold&gt;权限解锁&lt;/bold&gt;&lt;/light_purple&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; &lt;white&gt;满足指定权限&lt;/white&gt;&quot;
+  item: &quot;&lt;yellow&gt;&lt;bold&gt;物品提交&lt;/bold&gt;&lt;/yellow&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; %items%&quot;
+  papi: &quot;&lt;blue&gt;&lt;bold&gt;变量条件&lt;/bold&gt;&lt;/blue&gt; &lt;dark_gray&gt;·&lt;/dark_gray&gt; %papi_conditions%&quot;
+  free: &quot;&lt;green&gt;&lt;bold&gt;免费领取&lt;/bold&gt;&lt;/green&gt;&quot;
+
+potion-effects:
+  speed: &quot;速度&quot;
+  slowness: &quot;缓慢&quot;
+  haste: &quot;急迫&quot;
+  mining_fatigue: &quot;挖掘疲劳&quot;
+  strength: &quot;力量&quot;
+  instant_health: &quot;瞬间治疗&quot;
+  instant_damage: &quot;瞬间伤害&quot;
+  jump_boost: &quot;跳跃提升&quot;
+  nausea: &quot;反胃&quot;
+  regeneration: &quot;生命恢复&quot;
+  resistance: &quot;抗性提升&quot;
+  fire_resistance: &quot;抗火&quot;
+  water_breathing: &quot;水下呼吸&quot;
+  invisibility: &quot;隐身&quot;
+  blindness: &quot;失明&quot;
+  night_vision: &quot;夜视&quot;
+  hunger: &quot;饥饿&quot;
+  weakness: &quot;虚弱&quot;
+  poison: &quot;中毒&quot;
+  wither: &quot;凋零&quot;
+  health_boost: &quot;生命提升&quot;
+  absorption: &quot;伤害吸收&quot;
+  saturation: &quot;饱和&quot;
+  glowing: &quot;发光&quot;
+  levitation: &quot;飘浮&quot;
+  luck: &quot;幸运&quot;
+  unluck: &quot;霉运&quot;
+  slow_falling: &quot;缓降&quot;
+  conduit_power: &quot;潮涌能量&quot;
+  dolphins_grace: &quot;海豚的恩惠&quot;
+  bad_omen: &quot;不祥之兆&quot;
+  hero_of_the_village: &quot;村庄英雄&quot;
+  darkness: &quot;黑暗&quot;
+  trial_omen: &quot;试炼之兆&quot;
+  raid_omen: &quot;袭击之兆&quot;
+  wind_charged: &quot;蓄风&quot;
+  weaving: &quot;盘丝&quot;
+  oozing: &quot;渗浆&quot;
+  infested: &quot;寄生&quot;
+  breath_of_the_nautilus: &quot;鹦鹉螺之息&quot;</code></pre></div>
+      </section>
+
+      <section class="doc-section prose-section" id="operations" data-title="存储、重载与升级">
+        <div class="section-kicker">06 / Operations</div><h2>数据库、性能、重载与升级</h2>
+        <h3 class="config-subheading">数据库结构</h3><div class="table-wrap"><table><thead><tr><th>配置表</th><th>主键</th><th>保存内容</th></tr></thead><tbody><tr><td><code>tables.players</code></td><td>uuid</td><td>selected_title、applied_buffs、applied_server</td></tr><tr><td><code>tables.owned</code></td><td>uuid + title_id</td><td>玩家拥有称号</td></tr><tr><td><code>tables.custom-titles</code></td><td>id</td><td>owner_uuid、name、description、created_at；自动创建 owner_uuid 索引</td></tr><tr><td><code>tables.item-progress</code></td><td>uuid + title_id + item_key</td><td>分段提交数量</td></tr></tbody></table></div>
+        <div class="callout warning"><i data-lucide="refresh-cw"></i><div><strong>重载不是数据库重连</strong><p><code>/cloudtitle reload</code> 会关闭全部插件 GUI、取消未完成的工坊聊天输入、重载 YAML、重新接入经济服务并重应用在线 Buff；不会重建 Hikari 数据源，也不会更换 server-id 或定时任务周期。存储、server-id 和 refresh-ticks 调度周期变更后必须重启。</p></div></div>
+        <h3 class="config-subheading">性能与一致性</h3><ul><li>SQLite 使用单连接、单异步存储线程；MySQL 使用 HikariCP，异步线程数为连接池的一半且最少 2。</li><li>PAPI 查询只读缓存；GUI 与聊天监听在主线程更新 Bukkit 状态，数据库回调切回主线程。</li><li>MySQL 物品提交使用事务和 <code>FOR UPDATE</code>，避免同一进度并发超交；SQLite 依赖单线程串行。</li><li>插件卸载时关闭 GUI、卸载在线玩家、等待数据库任务最多 5 秒并关闭数据源。</li></ul>
+        <h3 class="config-subheading">升级与迁移</h3><ul><li>旧版默认语言前缀“云世界称号”会在精确匹配时改为“云称号”；自定义前缀不会覆盖。</li><li>三个旧版默认 GUI 标题会在精确匹配时迁移为“云称号 · 仓库/商城/工坊”；自定义标题不覆盖。</li><li>旧测试目录可能存在根目录 <code>gui.yml</code>，当前版本不读取该文件；实际 GUI 位于 <code>gui/</code> 子目录。</li><li>修改表名会创建空表，不自动搬迁旧数据；操作前备份数据库并自行迁移。</li><li>语言文件缺失键由内置 zh_CN 提供运行时默认值，但不会自动写回所有新键。</li></ul>
+      </section>
+    </article>
+    <nav class="plugin-pager" aria-label="插件详情分页"><a href="../../"><span><i data-lucide="arrow-left"></i>返回首页</span><strong>云插件系列</strong></a><a href="#configuration"><span>检查文档<i data-lucide="arrow-right"></i></span><strong>全部配置</strong></a></nav>
+    <footer><div class="footer-brand"><span class="brand-mark small cloud-mark"><i data-lucide="cloud"></i></span><strong>云插件系列 Cloud</strong></div><p>由 <strong>MoutainSeaL</strong> 维护 · QQ 3643203568</p><a href="#overview">返回顶部 <i data-lucide="arrow-up"></i></a></footer>
     </main>
-
-    <aside class="toc" aria-label="本页目录"><p>本页内容</p><a class="toc-link active" href="#overview">插件概览</a><a class="toc-link" href="#features">核心功能</a><a class="toc-link" href="#installation">安装方法</a><a class="toc-link" href="#commands">命令与权限</a><a class="toc-link" href="#configuration">配置示例</a><div class="toc-help"><i data-lucide="list"></i><a href="../../">系列首页</a></div></aside>
+    <aside class="toc" aria-label="本页目录"><p>本页内容</p><a class="toc-link active" href="#overview">插件概览</a><a class="toc-link" href="#features">核心功能</a><a class="toc-link" href="#installation">安装依赖</a><a class="toc-link" href="#commands">命令权限</a><a class="toc-link" href="#placeholders">变量与动作</a><a class="toc-link" href="#configuration">全部配置</a><a class="toc-link" href="#operations">运维升级</a><div class="toc-help"><i data-lucide="list"></i><a href="../../">系列首页</a></div></aside>
   </div>
-
   <div class="toast" id="toast" role="status"><i data-lucide="check"></i><span>已复制到剪贴板</span></div>
-  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-  <script src="../../catalog-data.js"></script>
-  <script src="../../plugin-navigation.js"></script>
-  <script src="../../plugin-common.js?v=20260729"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><script src="../../catalog-data.js"></script><script src="../../plugin-navigation.js"></script><script src="../../plugin-common.js?v=20260729"></script>
 </body>
 </html>
