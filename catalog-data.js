@@ -4,5 +4,6 @@ window.CLOUD_CATALOG = [
   { slug: 'cloudmarket', name: 'CloudMarket', title: '云市场', category: '经济交易', version: '1.5.0', icon: 'store', tone: 'amber', summary: '支持跨服上架、搜索和交易记录的玩家市场系统。', keywords: '市场 经济 交易 商店 跨服 税率' },
   { slug: 'cloudchat', name: 'CloudChat', title: '云聊天', category: '社交沟通', version: '2.1.1', icon: 'messages-square', tone: 'violet', summary: '频道、私聊、跨服广播与敏感词管理的一体化聊天模块。', keywords: '聊天 频道 私聊 跨服 敏感词 MiniMessage' },
   { slug: 'cloudquest', name: 'CloudQuest', title: '云任务', category: '玩法内容', version: '1.3.4', icon: 'scroll-text', tone: 'rose', summary: '可视化任务链、每日目标和跨服进度同步。', keywords: '任务 每日 目标 奖励 任务链 进度' },
-  { slug: 'cloudguard', name: 'CloudGuard', title: '云守护', category: '安全管理', version: '1.7.0', icon: 'shield-alert', tone: 'cyan', summary: '统一处罚、行为审计和服务器风险提醒。', keywords: '安全 封禁 禁言 审计 风险 WebHook' }
+  { slug: 'cloudguard', name: 'CloudGuard', title: '云守护', category: '安全管理', version: '1.7.0', icon: 'shield-alert', tone: 'cyan', summary: '统一处罚、行为审计和服务器风险提醒。', keywords: '安全 封禁 禁言 审计 风险 WebHook' },
+  { slug: 'cloudtitle', name: 'CloudTitle', title: '云称号', category: '玩法内容', version: '1.0.0', icon: 'badge', tone: 'blue', summary: '称号仓库、商城、自定义称号、药水增益与跨服同步的一体化称号系统。', keywords: '称号 GUI 商城 自定义 Buff MySQL SQLite PAPI CraftEngine 跨服' }
 ];
