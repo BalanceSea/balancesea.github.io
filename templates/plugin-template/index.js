@@ -45,6 +45,7 @@ export default {
       {
         name: 'config.yml',
         description: '主配置 · 必须完整展示',
+        language: 'yaml',
         code: `# 粘贴插件实际生成的完整 config.yml
 # 不允许省略任何键、注释或默认值
 enabled: true`
@@ -52,6 +53,7 @@ enabled: true`
       {
         name: 'messages.yml',
         description: '语言配置 · 必须完整展示',
+        language: 'yaml',
         code: `# 每个额外配置文件都建立独立条目
 prefix: "<green>[CloudExample]</green> "`
       }

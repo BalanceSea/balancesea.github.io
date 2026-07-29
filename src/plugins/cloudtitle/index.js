@@ -47,6 +47,7 @@ export default {
       {
         name: 'titles.yml',
         description: '称号定义示例',
+        language: 'yaml',
         code: `titles:
   experienced_adventurer:
     name: "<gradient:#60A5FA:#2563EB><bold>资深冒险家</bold></gradient>"

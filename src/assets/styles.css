@@ -189,17 +189,34 @@ td:last-child code { color: var(--muted); background: transparent; }
 .permission-list b { padding: 3px 8px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 9px; font-weight: 600; white-space: nowrap; }
 
 .code-block { overflow: hidden; border: 1px solid #2c342e; background: var(--code); box-shadow: 6px 6px 0 var(--line-strong); }
-.code-header { height: 46px; padding: 0 13px 0 17px; display: flex; align-items: center; justify-content: space-between; color: #a9b4ac; border-bottom: 1px solid #2c342e; background: #1c221e; font: 600 10px "Roboto Mono", monospace; }
-.code-header > span { display: flex; align-items: center; gap: 8px; }
+.code-header { min-height: 54px; padding: 8px 12px 8px 16px; display: flex; align-items: center; justify-content: space-between; gap: 14px; color: #a9b4ac; border-bottom: 1px solid #2c342e; background: #1c221e; font: 600 10px "Roboto Mono", monospace; }
+.code-file, .code-tools { display: flex; align-items: center; min-width: 0; }
+.code-file { gap: 9px; }
+.code-file > svg { width: 16px; height: 16px; flex: none; color: #8fc99e; }
+.code-file > span { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
+.code-file strong { overflow: hidden; color: #e6eee8; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.code-file small { overflow: hidden; color: #7f8c83; font-size: 9px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.code-tools { flex: none; gap: 7px; }
+.code-language, .code-lines { padding: 4px 6px; border: 1px solid #354039; border-radius: 3px; color: #8fc99e; background: #242c27; font-size: 9px; }
+.code-lines { color: #8e9a91; }
 .copy-button { display: flex; align-items: center; gap: 6px; padding: 5px 8px; color: #a9b4ac; border: 1px solid #364039; border-radius: 4px; background: transparent; cursor: pointer; font-size: 10px; }
 .copy-button:hover { color: white; border-color: #66756b; }
 .copy-button svg { width: 13px; height: 13px; }
 pre { margin: 0; padding: 20px; overflow: auto; color: var(--code-ink); font-size: 12px; line-height: 1.8; }
 pre code { padding: 0; color: inherit; background: transparent; font-size: inherit; }
-.code-comment { color: #718077; }
-.code-number { color: #f0be69; }
-.code-string { color: #8fc99e; }
-.code-bool { color: #88b4e0; }
+.config-code { max-height: min(60vh, 540px); overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable both-edges; white-space: pre; }
+.config-code:focus-visible { outline: 2px solid #8fc99e; outline-offset: -2px; }
+.config-code::-webkit-scrollbar { width: 11px; height: 11px; }
+.config-code::-webkit-scrollbar-track { background: #171c19; }
+.config-code::-webkit-scrollbar-thumb { border: 3px solid #171c19; border-radius: 8px; background: #4c5b51; }
+.config-code::-webkit-scrollbar-thumb:hover { background: #65766b; }
+.config-code .hljs-comment { color: #718077; font-style: italic; }
+.config-code .hljs-attr { color: #93bde8; }
+.config-code .hljs-string { color: #9ed3a8; }
+.config-code .hljs-number { color: #f0be69; }
+.config-code .hljs-literal { color: #dca0cf; }
+.config-code .hljs-bullet, .config-code .hljs-symbol { color: #72c7bd; }
+.config-code .hljs-meta { color: #bd9a72; }
 
 .faq-list { border-top: 1px solid var(--line); }
 details { border-bottom: 1px solid var(--line); }

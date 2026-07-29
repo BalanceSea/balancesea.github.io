@@ -38,7 +38,7 @@ src/plugins/cloudbackup/
 
 将 `templates/AI-INSTRUCTIONS.md`、插件完整源码和实际生成的配置目录一起提供给 AI。
 
-AI 必须完整记录所有配置文件。`configuration.files` 中一个对象对应一个实际文件，`code` 必须是完整内容，禁止使用省略号。
+AI 必须完整记录所有配置文件。`configuration.files` 中一个对象对应一个实际文件，YAML 文件填写 `language: 'yaml'`，`code` 必须是完整内容，禁止使用省略号。页面会自动应用 YAML 语法高亮，并将长配置限制在可纵向滚动的代码区域中。
 
 ## 4. 本地验证
 

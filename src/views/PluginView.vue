@@ -1,9 +1,10 @@
 <script setup>
 import { computed, ref, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { ArrowDown, Check, CircleCheckBig, Copy, Database, Download, FileCode2 } from '@lucide/vue';
+import { ArrowDown, Check, CircleCheckBig, Database, Download } from '@lucide/vue';
 import { getPlugin } from '../plugins/registry.js';
 import SiteFooter from '../components/SiteFooter.vue';
+import YamlCodeBlock from '../components/YamlCodeBlock.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -45,7 +46,16 @@ async function copyConfig(code) {
 
       <section class="doc-section prose-section" id="commands"><div class="section-kicker">03 / Commands</div><h2>命令与权限</h2><p class="lead">主命令别名为 <code>{{ plugin.aliases }}</code>。</p><div class="table-wrap"><table><thead><tr><th>命令</th><th>功能</th><th>权限</th></tr></thead><tbody><tr v-for="command in plugin.commands" :key="command[0]"><td><code>{{ command[0] }}</code></td><td>{{ command[1] }}</td><td><code>{{ command[2] }}</code></td></tr></tbody></table></div></section>
 
-      <section class="doc-section prose-section" id="configuration"><div class="section-kicker">04 / Configuration</div><h2>配置说明</h2><p class="lead">{{ plugin.configuration.intro }}</p><div v-for="file in plugin.configuration.files" :key="file.name" class="config-file"><h3 class="config-subheading">{{ file.name }}</h3><div class="code-block"><div class="code-header"><span><FileCode2 />{{ file.name }} · {{ file.description }}</span><button class="copy-button" type="button" :aria-label="`复制 ${file.name}`" @click="copyConfig(file.code)"><Copy /><span>复制</span></button></div><pre><code>{{ file.code }}</code></pre></div></div><div class="callout success"><Database /><div><strong>跨服部署</strong><p>{{ plugin.configuration.note }}</p></div></div></section>
+      <section class="doc-section prose-section" id="configuration">
+        <div class="section-kicker">04 / Configuration</div>
+        <h2>配置说明</h2>
+        <p class="lead">{{ plugin.configuration.intro }}</p>
+        <div v-for="file in plugin.configuration.files" :key="file.name" class="config-file">
+          <h3 class="config-subheading">{{ file.name }}</h3>
+          <YamlCodeBlock :file="file" @copy="copyConfig" />
+        </div>
+        <div class="callout success"><Database /><div><strong>跨服部署</strong><p>{{ plugin.configuration.note }}</p></div></div>
+      </section>
     </article>
     <SiteFooter />
     <div class="toast" :class="{ show: toast }" role="status"><Check /><span>{{ toast }}</span></div>
