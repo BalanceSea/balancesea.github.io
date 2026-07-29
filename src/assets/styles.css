@@ -440,6 +440,15 @@ footer > a svg { width: 14px; height: 14px; }
 .detail-feature-grid article > span { color: var(--green); font: 600 9px "Roboto Mono", monospace; }
 .detail-feature-grid h3 { margin: 24px 0 6px; font-size: 14px; }
 .detail-feature-grid p { margin: 0; color: var(--muted); font-size: 11px; }
+.doc-subsection { margin-top: 34px; }
+.config-subheading { margin: 34px 0 12px; font-size: 16px; }
+.reference-group + .reference-group, .config-file + .config-file { margin-top: 34px; }
+.reference-group h4 { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+.config-reference-table table { min-width: 1180px; }
+.config-reference-table td { vertical-align: top; }
+.configuration-references { margin-top: 42px; }
+.operation-notes ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; }
+.operation-notes li + li { margin-top: 9px; }
 .plugin-pager { display: grid; grid-template-columns: 1fr 1fr; margin-top: 72px; border: 1px solid var(--line); background: var(--line); gap: 1px; }
 .plugin-pager a { min-width: 0; padding: 20px; display: flex; flex-direction: column; background: var(--surface); transition: background .2s; }
 .plugin-pager a:hover { background: var(--surface-2); }

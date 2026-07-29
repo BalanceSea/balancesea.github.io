@@ -1,5 +1,5 @@
 <script setup>
-import { GitFork, Menu, Moon, Search, Sun } from '@lucide/vue';
+import { Menu, MessageCircle, Moon, Search, Sun } from '@lucide/vue';
 import BrandMark from './BrandMark.vue';
 
 defineProps({ theme: { type: String, required: true } });
@@ -16,7 +16,7 @@ defineEmits(['toggleTheme', 'toggleSidebar', 'openSearch']);
       <Search /><span>搜索插件与文档...</span><kbd>Ctrl K</kbd>
     </button>
     <div class="topbar-actions">
-      <a class="icon-button" href="https://github.com/yourname/cloud-plugins" target="_blank" rel="noreferrer" aria-label="GitHub 仓库" data-tooltip="GitHub"><GitFork /></a>
+      <a class="icon-button" href="https://qm.qq.com/" target="_blank" rel="noreferrer" aria-label="联系作者 QQ 3643203568" data-tooltip="联系作者"><MessageCircle /></a>
       <button class="icon-button" type="button" aria-label="切换主题" data-tooltip="切换主题" @click="$emit('toggleTheme')">
         <Moon v-if="theme === 'dark'" /><Sun v-else />
       </button>

@@ -5,26 +5,30 @@ import AppHeader from './components/AppHeader.vue';
 import AppSidebar from './components/AppSidebar.vue';
 import AppToc from './components/AppToc.vue';
 import SearchModal from './components/SearchModal.vue';
+import { getPlugin } from './plugins/registry.js';
 
 const route = useRoute();
 const sidebarOpen = ref(false);
 const searchOpen = ref(false);
 const theme = ref(localStorage.getItem('cloud-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 
-const tocItems = computed(() => route.name === 'plugin'
-  ? [
+const tocItems = computed(() => {
+  if (route.name === 'plugin') {
+    return getPlugin(route.params.slug)?.toc || [
       ['overview', '插件概览'],
       ['features', '核心功能'],
       ['installation', '安装方法'],
       ['commands', '命令与权限'],
       ['configuration', '配置说明']
-    ]
-  : [
+    ];
+  }
+  return [
       ['overview', '系列概览'],
       ['requirements', '兼容环境'],
       ['faq', '常见问题'],
       ['support', '获取支持']
-    ]);
+    ];
+});
 
 function applyTheme(value) {
   document.documentElement.dataset.theme = value;
