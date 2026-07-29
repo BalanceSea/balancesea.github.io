@@ -1,74 +1,51 @@
-# 添加新插件
+# 添加 Vue 插件文档
 
-## 1. 复制整个模板目录
+## 1. 复制插件模块模板
 
-不要只复制 HTML。将完整目录复制到 `plugins/`，目录名必须等于插件的小写 slug：
-
-```text
-templates/plugin-template/  ->  plugins/cloudbackup/
-```
-
-完成后应为：
+将模板目录复制到 Vue 插件目录，并使用小写 slug 命名：
 
 ```text
-plugins/cloudbackup/
-├── index.html
-└── plugin.json
+templates/plugin-template/  ->  src/plugins/cloudbackup/
 ```
 
-页面地址将是 `/plugins/cloudbackup/`，不会显示 `.html` 后缀。
+最终结构：
 
-## 2. 修改插件元数据
-
-编辑新目录中的 `plugin.json`：
-
-```json
-{
-  "slug": "cloudbackup",
-  "name": "CloudBackup",
-  "title": "云备份",
-  "category": "运维工具",
-  "version": "1.0.0",
-  "icon": "archive-restore",
-  "tone": "cyan",
-  "summary": "自动备份世界、配置和玩家数据。",
-  "keywords": "备份 恢复 世界 数据 定时任务"
-}
+```text
+src/plugins/cloudbackup/
+└── index.js
 ```
 
-`slug` 必须与目录名一致。可用色调为 `lime`、`blue`、`amber`、`violet`、`rose` 和 `cyan`。
+`src/plugins/registry.js` 使用 `import.meta.glob` 自动发现所有插件模块，侧栏和搜索无需手工登记。
 
-## 3. 生成动态插件列表
+## 2. 修改模块数据
 
-本地修改后运行：
+编辑 `src/plugins/cloudbackup/index.js`，至少替换：
+
+- `slug`、英文名、中文名、分类和版本
+- Minecraft、Java 与服务端版本
+- Lucide 图标与主题色
+- 简介、全部主要功能和安装步骤
+- 全部命令、别名、参数与权限
+- 全部配置文件
+
+路由会自动变为：
+
+```text
+/plugins/cloudbackup/
+```
+
+## 3. 配置文档要求
+
+将 `templates/AI-INSTRUCTIONS.md`、插件完整源码和实际生成的配置目录一起提供给 AI。
+
+AI 必须完整记录所有配置文件。`configuration.files` 中一个对象对应一个实际文件，`code` 必须是完整内容，禁止使用省略号。
+
+## 4. 本地验证
 
 ```bash
-node scripts/generate-plugin-registry.mjs
+npm install
+npm run dev
+npm run build
 ```
 
-脚本会扫描全部 `plugins/*/plugin.json` 并生成 `catalog-data.js`。首页和每个插件页面的侧栏都会自动更新，不需要逐页添加链接。
-
-推送到 GitHub 后，部署工作流会自动运行该命令。
-
-## 4. 让 AI 创建完整文档
-
-将以下内容同时提供给 AI：
-
-- `templates/AI-INSTRUCTIONS.md`
-- 新插件的完整源码
-- 插件实际生成的配置目录
-- `templates/plugin-template/index.html`
-
-AI 必须记录插件的全部配置文件和全部配置项，不能只提供配置示例。具体要求见 `AI-INSTRUCTIONS.md`。
-
-## 5. 完成前检查
-
-- `plugin.json` 的 slug 与目录名一致
-- 页面 `body` 的 `data-plugin` 等于 slug
-- 功能、命令、权限和占位符来自真实源码
-- 所有配置文件均完整展示
-- 每个叶子配置路径都有类型、默认值、允许值、生效方式和说明
-- 不使用省略号跳过配置
-- 页面地址不包含 `.html`
-- 作者为 `MoutainSeaL`
-- 作者 QQ 为 `3643203568`
+构建脚本会为每个 `src/plugins/*/` 生成 `dist/plugins/<slug>/index.html`，因此 GitHub Pages 地址不显示 `.html`。

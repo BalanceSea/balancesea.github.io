@@ -25,25 +25,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Vue Wiki
+        run: npm run build
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
-      - name: Generate plugin registry
-        run: node scripts/generate-plugin-registry.mjs
-
-      - name: Prepare public Wiki
-        run: |
-          mkdir -p .pages-site
-          cp index.html styles.css script.js catalog-data.js plugin-navigation.js plugin-common.js favicon.svg .nojekyll .pages-site/
-          cp -R plugins .pages-site/plugins
-          find .pages-site/plugins -name plugin.json -delete
-
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .pages-site
+          path: dist
 
       - name: Deploy
         id: deployment

@@ -54,18 +54,17 @@ AI 禁止：
 
 ## 目录与路由
 
-新插件必须使用以下结构：
+新插件必须使用以下 Vue 模块结构：
 
 ```text
-plugins/<小写插件名>/
-├── index.html
-└── plugin.json
+src/plugins/<小写插件名>/
+└── index.js
 ```
 
 完成后运行：
 
 ```bash
-node scripts/generate-plugin-registry.mjs
+npm run build
 ```
 
-侧栏将根据所有 `plugins/*/plugin.json` 自动生成。页面链接使用 `/plugins/<插件名>/` 形式，不显示 `.html`。
+`src/plugins/registry.js` 会通过 `import.meta.glob` 自动发现所有插件。构建脚本为每个插件生成目录入口，页面链接使用 `/plugins/<插件名>/` 形式，不显示 `.html`。
