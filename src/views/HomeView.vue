@@ -58,7 +58,7 @@ const firstPlugin = plugins[0];
 
   <section class="doc-section support-band" id="support">
     <div><span class="section-kicker">需要帮助？</span><h2>联系云插件系列作者。</h2><p>反馈问题时请附上服务端版本、插件版本和完整报错日志。</p></div>
-    <div class="support-actions"><a class="primary-button" href="https://github.com/yourname/cloud-plugins/issues" target="_blank" rel="noreferrer"><GitFork />提交 Issue</a><a class="qq-link" href="https://qm.qq.com/" target="_blank" rel="noreferrer"><span>作者 QQ</span><strong>3643203568</strong></a></div>
+    <div class="support-actions"><a class="primary-button" href="https://github.com/BalanceSea/cloud-plugins/issues" target="_blank" rel="noreferrer"><GitFork />提交 Issue</a><a class="qq-link" href="https://qm.qq.com/" target="_blank" rel="noreferrer"><span>作者 QQ</span><strong>3643203568</strong></a><a class="qq-link" href="https://qm.qq.com/q/D72ki83eUg" target="_blank" rel="noreferrer"><span>QQ 群聊</span><strong>点击加入</strong></a></div>
   </section>
   <SiteFooter />
 </template>
