@@ -45,7 +45,10 @@ if (copyButton) {
     const config = $('#configCode').innerText;
     let copied = false;
     try {
-      await navigator.clipboard.writeText(config);
+      await Promise.race([
+        navigator.clipboard.writeText(config),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Clipboard timeout')), 800))
+      ]);
       copied = true;
     } catch {
       const textArea = document.createElement('textarea');
