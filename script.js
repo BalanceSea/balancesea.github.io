@@ -55,9 +55,11 @@ function renderCatalog() {
       <a href="plugins/${plugin.slug}.html">查看插件详情 <i data-lucide="arrow-up-right"></i></a>
     </article>`).join('');
   $('#catalogRange').textContent = `${String(start + 1).padStart(2, '0')} - ${String(start + visible.length).padStart(2, '0')}`;
+  $('#catalogTotal').textContent = `/ ${String(plugins.length).padStart(2, '0')} ${plugins.length === 1 ? 'PLUGIN' : 'PLUGINS'}`;
   $('#pluginPages').innerHTML = Array.from({ length: totalPages }, (_, page) => `<button class="page-dot${page === catalogPage ? ' active' : ''}" type="button" data-page="${page}" aria-label="第 ${page + 1} 页" aria-current="${page === catalogPage ? 'page' : 'false'}">${String(page + 1).padStart(2, '0')}</button>`).join('');
   $('#pluginPrev').disabled = catalogPage === 0;
   $('#pluginNext').disabled = catalogPage === totalPages - 1;
+  $('.catalog-pagination').hidden = totalPages <= 1;
   $$('.page-dot').forEach((button) => button.addEventListener('click', () => { catalogPage = Number(button.dataset.page); renderCatalog(); }));
   initIcons();
 }

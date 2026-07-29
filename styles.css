@@ -372,6 +372,7 @@ footer > a svg { width: 14px; height: 14px; }
 .plugin-card > a svg { width: 14px; height: 14px; color: var(--accent); transition: transform .2s; }
 .plugin-card > a:hover svg { transform: translate(2px, -2px); }
 .catalog-pagination { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
+.catalog-pagination[hidden] { display: none; }
 .catalog-pagination > button { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: var(--surface); cursor: pointer; }
 .catalog-pagination > button:disabled { color: var(--line-strong); cursor: not-allowed; }
 .catalog-pagination svg { width: 15px; height: 15px; }
