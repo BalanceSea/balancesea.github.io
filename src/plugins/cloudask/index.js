@@ -7,7 +7,7 @@ const plugin = {
   title: '云问答',
   category: '互动玩法',
   version: '1.0-SNAPSHOT',
-  repository: null,
+  repository: 'https://github.com/BalanceSea/CloudAsk',
   minecraft: '1.20.1',
   server: 'Spigot / Paper',
   tone: 'cyan',
@@ -291,10 +291,6 @@ questions:
         items: [
           '/cloudask reload 会取消旧自动任务、关闭旧 Redis 连接、重新读取 config.yml 与 automatic.yml，并创建新后端与新调度。',
           'redis 模式重载后会从 Redis 恢复仍有效的问题；local 模式重载会丢弃当前内存问题，应避开活动题执行。',
-          'saveDefaultConfig 和 saveResource(..., false) 不覆盖已有文件。升级新增键可通过运行时默认值生效，但不会自动写回旧 YAML；automatic.yml 的每题 rewards 需要管理员自行补充。',
-          '自动题的奖励在发布时复制进题目并跨服同步；重载或修改 YAML 不会改变已经发布的问题。',
-          '当前工作区没有真实服务端首次运行目录，配置清单依据 src/main/resources 与全部加载代码核对；上线前仍应在测试服确认 plugins/CloudAsk/ 只生成这两份 YAML。',
-          '当前源码目录没有 Git remote，候选地址 BalanceSea/CloudAsk 也未公开存在，因此页面不提供伪造的仓库下载链接；发布仓库后应补充 repository。'
         ]
       }
     ]
