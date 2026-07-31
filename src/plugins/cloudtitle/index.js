@@ -6,14 +6,14 @@ const plugin = {
   "name": "CloudTitle",
   "title": "云称号",
   "category": "玩法内容",
-  "version": "1.0-SNAPSHOT",
+  "version": "2.0",
   "repository": "https://github.com/BalanceSea/CloudTitle",
   "minecraft": "1.20+",
-  "server": "Paper",
+  "server": "Spigot",
   "tone": "blue",
-  "summary": "称号仓库、商城、自定义称号、原版 Buff 与六种获取条件的一体化称号系统。",
-  "keywords": "称号 商城 仓库 自定义 Buff PlaceholderAPI SQLite MySQL Vault PlayerPoints CraftEngine",
-  "intro": "面向 Paper 1.20+ 生存服、会员服和群组服的完整称号系统。玩家通过称号仓库、商城与工坊管理身份展示，管理员可以组合金币、点券、权限、物品和 PAPI 数值条件，并为称号附加原版药水 Buff。",
+  "summary": "称号仓库、商城、自定义称号、原版 Buff、AP/SX 属性与六种获取条件的一体化称号系统。",
+  "keywords": "称号 商城 仓库 自定义 Buff AttributePlus SX-Attribute PlaceholderAPI SQLite MySQL Vault PlayerPoints CraftEngine",
+  "intro": "基于 Spigot API 1.20.1、面向 Spigot 1.20+ 生存服、会员服和群组服的完整称号系统。玩家通过称号仓库、商城与工坊管理身份展示，管理员可以组合金币、点券、权限、物品和 PAPI 数值条件，并为称号附加原版药水 Buff 及 AttributePlus、SX-Attribute 属性。",
   "toc": [
     [
       "overview",
@@ -56,6 +56,10 @@ const plugin = {
     [
       "显示与原版 Buff",
       "提供 Legacy 彩色、MiniMessage、纯文本、描述和 ID 变量。Buff 只清除插件记录的同等级效果，不删除其他系统后来施加的更高等级效果。"
+    ],
+    [
+      "AttributePlus / SX-Attribute",
+      "称号可分别配置两套属性插件的原生 Lore 词条。佩戴、切换、重生和重载会重应用，卸下、回收、退出和停服会清理独立来源，避免重复叠加。"
     ],
     [
       "SQLite / MySQL 跨服",
@@ -103,15 +107,15 @@ const plugin = {
     ]
   },
   "installation": {
-    "lead": "精确运行环境为 Paper 1.21.11 与 Java 21。构建产物名固定为 CloudTitle-1.0.jar，源码版本为 1.0-SNAPSHOT。",
+    "lead": "插件基于 Spigot API 1.20.1，api-version 为 1.20，字节码为 Java 17。构建产物名固定为 CloudTitle-2.0.jar，正式版本为 2.0。Minecraft 1.20.5 及更高版本的服务端本身需要 Java 21。",
     "steps": [
       [
         "安装 JAR",
-        "将 CloudTitle-1.0.jar 放入服务端 plugins/ 目录，不要解压或二次打包。"
+        "将 CloudTitle-2.0.jar 放入服务端 plugins/ 目录，不要解压或二次打包。"
       ],
       [
         "首次联网启动",
-        "Paper LibraryLoader 从 Maven Central 加载 HikariCP 6.3.0、SQLite JDBC 3.50.3.0 和 MySQL Connector/J 9.4.0。"
+        "Spigot LibraryLoader 从 Maven Central 加载 Adventure/MiniMessage 4.14.0、HikariCP 6.3.0、SQLite JDBC 3.50.3.0 和 MySQL Connector/J 9.4.0。"
       ],
       [
         "选择存储并配置",
@@ -120,14 +124,14 @@ const plugin = {
     ],
     "dependencies": [
       [
-        "Paper 1.20+ / Java 21",
+        "Spigot 1.20+ / Java 17 字节码",
         "运行环境",
-        "其他实现或版本未声明兼容，不应视为受支持。"
+        "基于 Spigot API 1.20.1；兼容同版本 Paper。1.20.5+ 服务端按官方要求使用 Java 21。"
       ],
       [
-        "HikariCP、SQLite JDBC、MySQL Connector/J",
-        "Spigot/Paper LibraryLoader 运行库",
-        "下载或数据库驱动初始化失败时插件停用。"
+        "Adventure/MiniMessage、HikariCP、SQLite JDBC、MySQL Connector/J",
+        "Spigot LibraryLoader 运行库",
+        "运行时从 Maven Central 加载且不打包进 JAR；下载或数据库驱动初始化失败时插件停用。"
       ],
       [
         "Vault",
@@ -148,9 +152,19 @@ const plugin = {
         "CraftEngine",
         "软依赖，反射接入",
         "原版物品仍可兑换；包含 CraftEngine 物品要求的称号拒绝提交。"
+      ],
+      [
+        "AttributePlus",
+        "软依赖，反射接入",
+        "未安装时只跳过 titles.yml 中 attribute-plus 属性词条。"
+      ],
+      [
+        "SX-Attribute",
+        "软依赖，反射接入",
+        "兼容新版命名来源与旧版 Class 分源 API；未安装时只跳过 sx-attribute 词条。"
       ]
     ],
-    "note": "插件没有必须手动安装的前置插件。金币、点券、PAPI 条件和 CraftEngine 物品仅在使用对应功能时需要相应软依赖；数据库驱动由 LibraryLoader 加载，不会打包进插件 JAR。"
+    "note": "插件没有必须手动安装的前置插件。金币、点券、PAPI 条件、CraftEngine 物品和 AP/SX 属性仅在使用对应功能时需要相应软依赖；MiniMessage 与数据库运行库由 LibraryLoader 加载，不会打包进插件 JAR。"
   },
   "aliases": "/ct、/title、/称号",
   "commandHeaders": [
@@ -194,7 +208,7 @@ const plugin = {
       "玩家",
       "cloudtitle.use",
       "所有玩家",
-      "清空真实选择并移除插件记录的 Buff；显示类 PAPI 可回退默认称号。"
+      "清空真实选择并移除插件记录的 Buff 与 AP/SX 属性来源；显示类 PAPI 可回退默认称号。"
     ],
     [
       "/cloudtitle grant <玩家> <id>",
@@ -215,7 +229,7 @@ const plugin = {
       "玩家或控制台",
       "cloudtitle.admin",
       "OP",
-      "关闭全部插件 GUI、取消工坊聊天输入、重载 YAML 并重应用在线玩家 Buff。"
+      "关闭全部插件 GUI、取消工坊聊天输入、重载 YAML、重新探测属性插件，并重应用在线玩家 Buff 与 AP/SX 来源。"
     ]
   ],
   "permissions": [
@@ -311,7 +325,7 @@ const plugin = {
           ],
           [
             "动态称号",
-            "%title_id%、%title_name%、%title_material%、%title_description%、%title_buffs%、%title_cost%、%title_requirement%、%title_status%"
+            "%title_id%、%title_name%、%title_material%、%title_description%、%title_buffs%、%title_attributes%、%title_cost%、%title_requirement%、%title_status%"
           ],
           [
             "工坊",
@@ -372,7 +386,7 @@ const plugin = {
     "inventory": [
       [
         "config.yml",
-        "服务器 ID、默认称号、自定义称号与 Buff",
+        "服务器 ID、属性联动、默认称号、自定义称号与 Buff",
         "多数重载；server-id 和调度周期需重启",
         "否"
       ],
@@ -384,7 +398,7 @@ const plugin = {
       ],
       [
         "titles.yml",
-        "全部静态称号、Buff 与商城条件",
+        "全部静态称号、Buff、AP/SX 属性与商城条件",
         "执行 /cloudtitle reload",
         "否"
       ],
@@ -408,7 +422,7 @@ const plugin = {
       ],
       [
         "lang/zh_CN.yml",
-        "消息、条件模板与 Buff 中文名",
+        "消息、条件模板、Buff 中文名与 AP/SX 显示格式",
         "执行 /cloudtitle reload",
         "否"
       ]
@@ -445,13 +459,31 @@ const plugin = {
             "选择语言文件；目标文件不存在时回退到 lang/zh_CN.yml，并继承内置中文默认键。"
           ],
           [
+            "config.yml / integrations.attribute-plus.enabled",
+            "布尔值",
+            "true",
+            "true / false",
+            "否",
+            "执行 /cloudtitle reload",
+            "是否探测并接入 AttributePlus。关闭或重载时先清理 CloudTitle 已应用的 AP 属性来源。"
+          ],
+          [
+            "config.yml / integrations.sx-attribute.enabled",
+            "布尔值",
+            "true",
+            "true / false",
+            "否",
+            "执行 /cloudtitle reload",
+            "是否探测并接入 SX-Attribute。兼容新版命名来源 API 与旧版 Class 分源 API。"
+          ],
+          [
             "config.yml / default-title.enabled",
             "布尔值",
             "true",
             "true / false",
             "否",
             "执行 /cloudtitle reload",
-            "玩家未佩戴称号时是否让显示类 PAPI 变量回退到默认称号；不会授予称号或施加 Buff。"
+            "玩家未佩戴称号时是否让显示类 PAPI 变量回退到默认称号；不会授予称号，也不会施加 Buff 或 AP/SX 属性。"
           ],
           [
             "config.yml / default-title.id",
@@ -768,6 +800,24 @@ const plugin = {
             "否",
             "执行 /cloudtitle reload",
             "是否在客户端 HUD 显示效果图标。"
+          ],
+          [
+            "titles.yml / titles.<id>.attributes.attribute-plus[]",
+            "字符串列表",
+            "[]",
+            "AttributePlus 支持的原生 Lore 属性词条",
+            "否",
+            "执行 /cloudtitle reload",
+            "安装并启用 AttributePlus 时，为真实佩戴中的称号创建独立属性来源；空白词条会被忽略。"
+          ],
+          [
+            "titles.yml / titles.<id>.attributes.sx-attribute[]",
+            "字符串列表",
+            "[]",
+            "SX-Attribute 支持的原生 Lore 属性词条",
+            "否",
+            "执行 /cloudtitle reload",
+            "安装并启用 SX-Attribute 时，为真实佩戴中的称号创建独立属性来源；也可使用别名 sx。"
           ],
           [
             "titles.yml / titles.<id>.shop.enabled",
@@ -1779,6 +1829,69 @@ const plugin = {
             "多个 Buff 之间的连接文本。"
           ],
           [
+            "lang/zh_CN.yml / attribute-display.none",
+            "MiniMessage 字符串",
+            "\"<gray>无属性加成</gray>\"",
+            "任意 MiniMessage 文本",
+            "否",
+            "执行 /cloudtitle reload",
+            "称号没有 AP/SX 属性词条时的 GUI 文本。"
+          ],
+          [
+            "lang/zh_CN.yml / attribute-display.attribute-plus-name",
+            "MiniMessage 字符串",
+            "\"<gold><bold>AP</bold></gold>\"",
+            "任意 MiniMessage 文本",
+            "否",
+            "执行 /cloudtitle reload",
+            "AttributePlus 属性组显示名称。"
+          ],
+          [
+            "lang/zh_CN.yml / attribute-display.sx-attribute-name",
+            "MiniMessage 字符串",
+            "\"<aqua><bold>SX</bold></aqua>\"",
+            "任意 MiniMessage 文本",
+            "否",
+            "执行 /cloudtitle reload",
+            "SX-Attribute 属性组显示名称。"
+          ],
+          [
+            "lang/zh_CN.yml / attribute-display.provider-format",
+            "MiniMessage 字符串",
+            "\"%provider% <dark_gray>│</dark_gray> %attributes%\"",
+            "保留 %provider% 与 %attributes%",
+            "否",
+            "执行 /cloudtitle reload",
+            "每个属性插件分组的显示格式。"
+          ],
+          [
+            "lang/zh_CN.yml / attribute-display.provider-separator",
+            "字符串",
+            "换行符",
+            "任意分隔文本；支持 MiniMessage",
+            "否",
+            "执行 /cloudtitle reload",
+            "AP 与 SX 属性组之间的分隔符；默认换行，GUI 会展开为多行 Lore。"
+          ],
+          [
+            "lang/zh_CN.yml / attribute-display.entry-format",
+            "MiniMessage 字符串",
+            "\"<white>%attribute%</white>\"",
+            "保留 %attribute%",
+            "否",
+            "执行 /cloudtitle reload",
+            "单条属性 Lore 词条的显示格式。"
+          ],
+          [
+            "lang/zh_CN.yml / attribute-display.entry-separator",
+            "MiniMessage 字符串",
+            "\"<dark_gray>、</dark_gray> \"",
+            "任意 MiniMessage 文本",
+            "否",
+            "执行 /cloudtitle reload",
+            "同一属性插件多条词条之间的连接文本。"
+          ],
+          [
             "lang/zh_CN.yml / shop-requirements[]",
             "字符串列表",
             "",
@@ -2216,13 +2329,20 @@ const plugin = {
     "files": [
       {
         "name": "config.yml",
-        "description": "主配置：服务器标识、默认称号、自定义称号与 Buff",
+        "description": "主配置：服务器标识、属性联动、默认称号、自定义称号与 Buff",
         "language": "yaml",
         "code": String.raw`server-id: "lobby-1"
 default-language: "zh_CN"
 
+# 第三方属性插件为软依赖，通过其运行时 API 接入，不会打包进 CloudTitle。
+integrations:
+  attribute-plus:
+    enabled: true
+  sx-attribute:
+    enabled: true
+
 # 玩家没有佩戴称号时，仅在 PAPI 显示中使用该称号。
-# 不会自动授予、佩戴或施加 Buff。
+# 不会自动授予、佩戴，也不会施加 Buff 或 AP/SX 属性。
 default-title:
   enabled: true
   id: resident
@@ -2270,7 +2390,7 @@ mysql:
       },
       {
         "name": "titles.yml",
-        "description": "称号定义：名称、描述、Buff 与商城条件",
+        "description": "称号定义：名称、描述、Buff、AP/SX 属性与商城条件",
         "language": "yaml",
         "code": String.raw`titles:
   resident:
@@ -2280,6 +2400,14 @@ mysql:
       - "<gray>每一段传奇，都从平凡的名字开始。"
     icon: COMPASS
     buffs: {}
+    # 安装对应属性插件后，取消注释并使用该插件支持的 Lore 词条格式。
+    attributes:
+      attribute-plus: []
+      # attribute-plus:
+      #   - "物理伤害:5"
+      sx-attribute: []
+      # sx-attribute:
+      #   - "攻击力: 5"
     shop:
       enabled: false
       display: false
@@ -2492,7 +2620,9 @@ Icons:
         - "<gray>称号介绍"
         - "<dark_gray>  ▪</dark_gray> <white>%title_description%"
         - ""
-        - "<gray>增益效果 <dark_gray>│</dark_gray> <aqua>%title_buffs%"
+        - "<gray>原版增益 <dark_gray>│</dark_gray> <aqua>%title_buffs%"
+        - "<gray>属性加成"
+        - "<dark_gray>  ▪</dark_gray> %title_attributes%"
         - "<gray>当前状态 <dark_gray>│</dark_gray> %title_status%"
         - "<dark_gray>━━━━━━━━━━━━━━━━━━━━"
         - "<yellow>▶ 点击佩戴此称号"
@@ -2534,7 +2664,7 @@ Icons:
       Material: RED_DYE
       Name: "<red><bold>卸下当前称号</bold>"
       Lore:
-        - "<gray>保留拥有权，仅停止展示和 Buff"
+        - "<gray>保留拥有权，停止展示及全部加成"
         - ""
         - "<red>▶ 点击卸下"
     Actions:
@@ -2581,7 +2711,9 @@ Icons:
         - "<gray>称号故事"
         - "<dark_gray>  ▪</dark_gray> <white>%title_description%"
         - ""
-        - "<gray>增益效果 <dark_gray>│</dark_gray> <aqua>%title_buffs%"
+        - "<gray>原版增益 <dark_gray>│</dark_gray> <aqua>%title_buffs%"
+        - "<gray>属性加成"
+        - "<dark_gray>  ▪</dark_gray> %title_attributes%"
         - "<gray>获取方式 <dark_gray>│</dark_gray> %title_requirement%"
         - "<dark_gray>━━━━━━━━━━━━━━━━━━━━"
         - "<yellow>▶ 点击购买或领取"
@@ -2739,6 +2871,16 @@ buff-display:
   format: "<aqua>%effect%</aqua> <white>%level%</white>"
   separator: "<dark_gray>、</dark_gray> "
 
+# GUI 中的 AP/SX 属性词条显示格式。
+attribute-display:
+  none: "<gray>无属性加成</gray>"
+  attribute-plus-name: "<gold><bold>AP</bold></gold>"
+  sx-attribute-name: "<aqua><bold>SX</bold></aqua>"
+  provider-format: "%provider% <dark_gray>│</dark_gray> %attributes%"
+  provider-separator: "\n"
+  entry-format: "<white>%attribute%</white>"
+  entry-separator: "<dark_gray>、</dark_gray> "
+
 # 商城未设置 requirement-display 时使用的默认获取条件。
 shop-requirements:
   money: "<gold><bold>金币购买</bold></gold> <dark_gray>·</dark_gray> <white>%amount% 金币</white>"
@@ -2794,7 +2936,7 @@ potion-effects:
     "note": "所有子服连接同一 MySQL 时，每台服务器必须配置唯一 server-id。修改表名会创建新的空表，不会自动搬迁旧数据；变更存储配置后必须完整重启。"
   },
   "operations": {
-    "intro": "数据库连接、异步任务、跨服 Buff 清理和配置迁移均有明确边界；上线前应按本节规划重启与数据迁移。",
+    "intro": "数据库连接、异步任务、跨服 Buff 清理、AP/SX 属性来源和配置迁移均有明确边界；上线前应按本节规划重启与数据迁移。",
     "tables": [
       {
         "title": "数据库表结构",
@@ -2840,7 +2982,8 @@ potion-effects:
       {
         "title": "重载与升级",
         "items": [
-          "/cloudtitle reload 会关闭全部插件 GUI、取消未完成的工坊聊天输入、重载 YAML、重新接入经济服务并重应用在线 Buff；不会重建数据库连接，也不会改变已创建的定时任务周期。",
+          "/cloudtitle reload 会关闭全部插件 GUI、取消未完成的工坊聊天输入、重载 YAML、重新接入经济与 AP/SX 属性服务，并重应用在线玩家 Buff 和属性来源；不会重建数据库连接，也不会改变已创建的定时任务周期。",
+          "AP/SX 属性来源只绑定真实佩戴称号：切换前先删除旧来源，重生后重应用，退出与停服时清理；定时 Buff 刷新不会重复叠加第三方属性。",
           "旧版默认语言前缀“云世界称号”和三个旧版默认 GUI 标题仅在精确匹配时迁移为“云称号”；管理员自定义内容不会被覆盖。",
           "旧测试目录可能存在根目录 gui.yml，当前版本不读取该文件；实际 GUI 位于 gui/ 子目录。",
           "语言文件缺失键会从内置 zh_CN 获取运行时默认值，但不会自动把所有新键写回磁盘。",

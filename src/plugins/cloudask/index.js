@@ -42,17 +42,18 @@ const plugin = {
   installation: {
     lead: '源码使用 Java 17 工具链、Spigot API 1.20.1 与 api-version 1.20；精确验证目标为 Spigot/Paper 1.20.1，其他版本未声明兼容。',
     steps: [
-      ['安装正确的 JAR', '将 CloudAsk-1.0-SNAPSHOT.jar 放入 plugins/，不要使用不含 Jedis、Gson 和 cron-utils 的 CloudAsk-1.0-SNAPSHOT-plain.jar。'],
-      ['首次启动', '启动服务器后生成 plugins/CloudAsk/config.yml 与 automatic.yml。单服可保留 mode: local；自动题默认关闭。'],
+      ['安装插件 JAR', '将唯一构建产物 CloudAsk-1.0-SNAPSHOT.jar 放入 plugins/，不要解压或二次打包。'],
+      ['首次联网启动', 'Spigot/Paper LibraryLoader 根据 plugin.yml 从 Maven Central 下载 Jedis 5.2.0、Gson 2.11.0 和 cron-utils 9.2.1；下载失败时插件无法加载。'],
+      ['生成并配置文件', '启动后生成 plugins/CloudAsk/config.yml 与 automatic.yml。单服可保留 mode: local；自动题默认关闭。'],
       ['配置群组服', '所有子服改为 mode: redis，连接同一 Redis database 与 namespace，并为每台子服设置清晰的 server-id，然后重启或执行 /cloudask reload。']
     ],
     dependencies: [
       ['Java 17', '运行环境', '低于 Java 17 无法加载插件。'],
       ['Spigot/Paper 1.20.1', '服务端 API', '其他 Minecraft 或服务端版本没有经过当前源码声明与验证。'],
       ['Redis', 'redis 模式外部服务', '连接失败时群组发布、同步和抢答判定不可用；local 模式不需要 Redis。'],
-      ['Jedis 5.2.0 / Gson 2.11.0 / cron-utils 9.2.1', '已打包运行库', '已重定位进正式 JAR，无需单独安装。']
+      ['Jedis 5.2.0 / Gson 2.11.0 / cron-utils 9.2.1', 'LibraryLoader 运行库', '由服务端从 Maven Central 解析；下载或解析失败时插件无法加载。']
     ],
-    note: 'plugin.yml 没有 depend 或 softdepend，因此没有必须安装的前置插件。Redis 不是 Bukkit 插件，只在启用 redis 模式时需要；正式发布包已包含全部 Java 运行库。'
+    note: 'plugin.yml 没有 depend 或 softdepend，因此没有必须手动安装的前置插件。Redis 不是 Bukkit 插件，只在启用 redis 模式时需要；三个 Java 依赖不在插件 JAR 内，首次加载必须能访问 Maven Central，之后是否需要联网取决于服务端本地依赖缓存。'
   },
   aliases: '/cask',
   commandHeaders: ['命令', '执行者', '权限', '默认授权', '行为'],
