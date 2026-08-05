@@ -6,13 +6,13 @@ const plugin = {
   name: 'CloudGift',
   title: '云礼包',
   category: '服务器工具',
-  version: '1.5.0',
+  version: '1.6.0',
   repository: 'https://github.com/BalanceSea/CloudGift',
-  minecraft: '1.21.11',
-  server: 'Paper',
+  minecraft: '1.20.1',
+  server: 'Spigot',
   tone: 'lime',
   summary: '支持自然日刷新、精确小时冷却、领取次数限制、GUI 编辑和 SQLite/MySQL 跨服共享的礼包插件。',
-  keywords: '礼包 自然日刷新 24点 冷却 次数限制 GUI SQLite MySQL MariaDB PlaceholderAPI Paper',
+  keywords: '礼包 自然日刷新 24点 冷却 次数限制 GUI SQLite MySQL MariaDB PlaceholderAPI Spigot',
   intro: '面向生存服、会员服和群组服的可配置礼包系统。管理员可以为礼包组合权限、累计领取次数、精确小时冷却或跨零点刷新，并通过游戏内 GUI 维护命令与完整物品奖励；单服使用 SQLite 即装即用，群组服可通过 MySQL/MariaDB 原子共享领取记录。',
   toc: [
     ['overview', '插件概览'],
@@ -43,23 +43,25 @@ const plugin = {
     ]
   },
   installation: {
-    lead: '当前源码以 Java 21、Paper API 1.21.11 和 api-version 1.21 构建，精确验证目标为 Paper 1.21.11；构建产物为 CloudGift-1.5.0.jar。',
+    lead: '当前源码以 Java 17、Spigot API 1.20.1 和 api-version 1.20 构建，并已在 Spigot 1.20.1 完成启停验证；构建产物为 CloudGift-1.6.0.jar。',
     steps: [
-      ['安装插件 JAR', '将 CloudGift-1.5.0.jar 放入服务端 plugins/，保持 JAR 原样，不要解压或二次打包。'],
-      ['首次联网启动', 'Paper Library Loader 从 Maven 仓库加载 HikariCP 7.1.0、MySQL Connector/J 9.7.0 和 SQLite JDBC 3.53.2.0；首次解析依赖需要服务端可联网。'],
+      ['安装插件 JAR', '将 CloudGift-1.6.0.jar 放入服务端 plugins/，保持 JAR 原样，不要解压或二次打包。'],
+      ['首次联网启动', 'Spigot Library Loader 从 Maven 仓库加载 Adventure MiniMessage 4.17.0、Adventure Legacy Serializer 4.17.0、HikariCP 7.1.0、MySQL Connector/J 9.7.0 和 SQLite JDBC 3.53.2.0；首次解析依赖需要服务端可联网。'],
       ['检查默认文件', '首次启动会生成 config.yml、messages.yml、items.yml、gifts/novice.yml、gifts/monthly.yml 和 SQLite 的 data.db。控制台应显示 CloudGift 已启用及载入礼包数量。'],
       ['选择存储模式', '单服保留 sqlite；群组服填写 MySQL/MariaDB 参数，让所有节点使用同一数据库、table-prefix、礼包文件和 time.zone-id，然后完整重启。'],
       ['按需安装 PlaceholderAPI', '安装 PlaceholderAPI 2.12.3 后重启，即可使用 cloudgift 变量，并允许奖励命令继续展开其他 PAPI 变量。']
     ],
     dependencies: [
-      ['Java 21', '运行环境', '低于 Java 21 时插件不会加载。'],
-      ['Paper 1.21.11', '服务端 API', '当前源码和启停测试均以此版本为目标；Spigot 与其他 Minecraft 版本未声明兼容。'],
+      ['Java 17', '运行环境', '低于 Java 17 时插件不会加载。'],
+      ['Spigot 1.20.1', '服务端 API', '当前源码、Library Loader 和启停测试均以此版本为目标。'],
+      ['Adventure MiniMessage 4.17.0', 'Library Loader 运行库', '解析 messages.yml、礼包显示名称与 GUI 文本中的 MiniMessage 格式。'],
+      ['Adventure Legacy Serializer 4.17.0', 'Library Loader 运行库', '把 Adventure 文本转换为 Spigot 1.20 可发送的颜色字符串。'],
       ['HikariCP 7.1.0', 'Library Loader 运行库', '负责 SQLite 与 MySQL/MariaDB 连接池；加载失败时数据库无法初始化，插件会停用。'],
       ['MySQL Connector/J 9.7.0', 'Library Loader 运行库', 'mysql 和 mariadb 存储模式使用；SQLite 模式仍由 plugin.yml 声明并解析该库。'],
       ['SQLite JDBC 3.53.2.0', 'Library Loader 运行库', 'sqlite 存储模式使用；MySQL/MariaDB 模式仍由 plugin.yml 声明并解析该库。'],
       ['PlaceholderAPI 2.12.3', '可选软依赖', '缺失时 cloudgift 变量不注册，奖励命令中的其他 PAPI 变量不展开；礼包、GUI、数据库和内置奖励变量仍可使用。']
     ],
-    note: '插件没有必须手动安装的 Bukkit 前置插件。三个 JDBC/连接池运行库由 Paper Library Loader 提供，不打包进 CloudGift JAR；依赖解析失败会阻止插件完成加载。PlaceholderAPI 是 softdepend，缺失时只关闭变量扩展能力。'
+    note: '插件没有必须手动安装的 Bukkit 前置插件。五个运行库由 Spigot Library Loader 提供，不打包进 CloudGift JAR；依赖解析失败会阻止插件完成加载。PlaceholderAPI 是 softdepend，缺失时只关闭变量扩展能力。'
   },
   aliases: '/gift：/libao、/cgift； /cloudgift：/cloudgifts； menu：gui、editor； add：saveitem； remove：reset',
   commandHeaders: ['命令', '执行者', '权限', '默认授权', '行为'],
